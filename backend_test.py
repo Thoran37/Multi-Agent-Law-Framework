@@ -11,7 +11,8 @@ class LegalCourtSimulatorTester:
         self.case_id = None
         self.tests_run = 0
         self.tests_passed = 0
-        self.sample_case_file = "/tmp/sample_case.txt"
+        # Use a repo-local sample file by default (cross-platform)
+        self.sample_case_file = str(Path(__file__).parent / "sample_case.txt")
 
     def run_test(self, name, method, endpoint, expected_status, data=None, files=None):
         """Run a single API test"""
