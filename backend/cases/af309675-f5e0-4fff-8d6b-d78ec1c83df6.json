@@ -1,0 +1,65 @@
+{
+  "filename": "sample_case.txt",
+  "raw_text": "SUPREME COURT OF INDIA CIVIL APPEAL NO. 1234 OF 2024 PETITIONER: Ram Kumar RESPONDENT: State of Maharashtra FACTS: The petitioner, Ram Kumar, filed a writ petition challenging the termination of his government employment. He was employed as a clerk in the Maharashtra State Revenue Department for 15 years. On March 15, 2023, he was terminated from service without proper inquiry or show cause notice. The petitioner claims that the termination violated principles of natural justice as he was not given an opportunity to defend himself against the allegations of misconduct. The respondent state claims that the petitioner was involved in accepting bribes from citizens for processing land records. Multiple complaints were received against the petitioner, and surveillance was conducted which allegedly confirmed the allegations. The state argues that immediate termination was necessary to prevent further corruption. ISSUES: 1. Whether the termination of the petitioner without conducting a proper departmental inquiry violated principles of natural justice? 2. Whether the evidence collected through surveillance is admissible and sufficient to justify termination? 3. Whether the petitioner is entitled to reinstatement and back wages? HOLDING: The court observed that the principles of natural justice are fundamental to administrative law and cannot be overlooked. Every employee has the right to be heard before any adverse action is taken against them. The surveillance evidence, while relevant, should have been presented to the petitioner during a proper inquiry. However, the court also noted that the allegations of corruption are serious in nature and cannot be ignored. The state has a duty to maintain integrity in public service. The court held that while the termination procedure was flawed, the petitioner's conduct prima facie suggests misconduct. JUDGMENT: The court set aside the termination order and directed the state to conduct a fresh departmental inquiry within 60 days, following all principles of natural justice. The petitioner shall be deemed to be under suspension during this period. Based on the outcome of the inquiry, appropriate action may be taken. No back wages shall be paid for the suspension period if misconduct is proved.",
+  "upload_timestamp": "2025-11-15T06:20:31.739548+00:00",
+  "case_id": "af309675-f5e0-4fff-8d6b-d78ec1c83df6",
+  "facts": "Ram Kumar, a clerk in the Maharashtra State Revenue Department, was terminated from service after 15 years without a proper inquiry or show cause notice. He was accused of accepting bribes from citizens for processing land records, with multiple complaints and surveillance evidence against him. The petitioner claims the termination violated principles of natural justice, while the state argues it was necessary to prevent further corruption.",
+  "issues": "1. Whether the termination without a proper departmental inquiry violated principles of natural justice, 2. Whether the surveillance evidence is admissible and sufficient to justify termination, 3. Whether the petitioner is entitled to reinstatement and back wages",
+  "holding": "The court set aside the termination order, directing a fresh departmental inquiry within 60 days, following principles of natural justice. The petitioner will be deemed under suspension during this period. If misconduct is proved, no back wages will be paid for the suspension period.",
+  "baseline_prediction": {
+    "prediction": "FAVOR_PLAINTIFF",
+    "confidence": 100.0,
+    "method": "baseline_keyword_classifier",
+    "plaintiff_keywords_found": 1,
+    "defendant_keywords_found": 0
+  },
+  "simulation": {
+    "debate_transcript": [
+      {
+        "round": 1,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Honorable Court, I appear on behalf of the petitioner, Ram Kumar, who has been wrongly terminated from service without adhering to the principles of natural justice. The abrupt termination, without a proper inquiry or show cause notice, is a clear violation of Article 311 of the Constitution of India, which guarantees protection to government servants against arbitrary dismissal. \n\nThe Supreme Court, in the case of Union of India v. Tulsiram Patel (1985), has held that an opportunity of hearing is a mandatory requirement before passing an order of dismissal or removal. In this case, my client was not provided with an opportunity to defend himself, which is a blatant disregard of his fundamental rights.\n\nThe surveillance evidence, relied upon by the state, is not sufficient to justify termination without a proper inquiry. The Indian Evidence Act, 1872, requires that evidence be produced and tested in a fair and transparent manner. The petitioner has a right to cross-examine witnesses and challenge the evidence, which was denied to him.\n\nI urge the court to consider the grave injustice meted out to my client and direct a fresh departmental inquiry, ensuring that the principles of natural justice are upheld. The petitioner is entitled to reinstatement and back wages, as the termination order is liable to be set aside. I will provide further arguments and cite relevant legal precedents to support my client's case. Thank you, Honorable Court."
+      },
+      {
+        "round": 1,
+        "speaker": "Defendant Lawyer",
+        "argument": "My Lords, the respondent, State of Maharashtra, strongly contests the petitioner's claims. While we acknowledge the importance of principles of natural justice, we argue that the termination of Ram Kumar's service was necessary to prevent further corruption and maintain public trust in the Revenue Department. The multiple complaints and surveillance evidence against him demonstrate a clear prima facie case of misconduct.\n\nWe rely on the judgment in Union of India vs. Tulsiram Patel (1985), which held that in cases of grave misconduct, immediate termination may be justified to prevent further harm. The petitioner's actions, if true, constitute a serious breach of trust and warrant swift action. The surveillance evidence, though not a part of a formal inquiry, is admissible under Section 65B of the Indian Evidence Act, 1872, as electronic records.\n\nWe challenge the petitioner's claim of violation of natural justice, citing the Supreme Court's decision in Ajay Kumar Choudhary vs. Union of India (2015), which held that in cases of misconduct, a preliminary inquiry may suffice before termination. The respondent had conducted a preliminary inquiry, which revealed sufficient evidence to justify termination. We request the court to consider the larger public interest and the need to maintain integrity in public services, rather than reinstating an allegedly corrupt employee. The respondent is willing to conduct a fresh departmental inquiry, as directed by the court, to ensure a fair and impartial investigation."
+      },
+      {
+        "round": 2,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Honorable Court, I appear on behalf of Ram Kumar, the petitioner, who has been wrongly terminated from service without being afforded the basic principles of natural justice. The respondent's actions are in blatant disregard of the constitutional guarantees enshrined under Article 311 of the Constitution of India, which mandates that no government servant shall be dismissed or removed from service without being given an opportunity to be heard.\n\nThe termination order is based on unproven allegations and inadmissible surveillance evidence, which is not sufficient to justify such a drastic measure. The Supreme Court in the case of Union of India vs. Mohan Lal Kapoor (1974) 1 SCC 714, has held that an employee has a right to be heard before being dismissed from service. The petitioner was not provided with a show cause notice, nor was he given an opportunity to defend himself against the allegations.\n\nI will demonstrate that the respondent's actions are in contravention of the Central Civil Services (Classification, Control and Appeal) Rules, 1965, and the Maharashtra Civil Services (Discipline and Appeal) Rules, 1979. The petitioner is entitled to a fair and impartial inquiry, and the respondent's failure to provide the same is a clear violation of his rights. I request this Honorable Court to set aside the termination order and direct a fresh departmental inquiry, ensuring that the petitioner's rights are protected and the principles of natural justice are upheld."
+      },
+      {
+        "round": 2,
+        "speaker": "Defendant Lawyer",
+        "argument": "My Lord, the respondent state's decision to terminate Ram Kumar's services was necessitated by the gravity of the allegations against him. The multiple complaints and surveillance evidence demonstrate a prima facie case of corruption, which, if allowed to continue, would have undermined the integrity of the Revenue Department. \n\nWhile the petitioner claims a violation of natural justice, I argue that the respondent state's actions were justified under the Maharashtra Civil Services (Discipline and Appeal) Rules, 1979, which permit summary dismissal in cases of gross misconduct. The Supreme Court in the case of Union of India vs. Tulsiram Patel (1985) has upheld the validity of such rules.\n\nThe surveillance evidence, though questioned by the petitioner, is admissible under the Indian Evidence Act, 1872, as it was collected in the course of a legitimate investigation. I cite the case of R. vs. Khan (1996) where the court held that evidence collected through surveillance is admissible if it is relevant and not obtained through unlawful means.\n\nThe petitioner's claim for reinstatement and back wages is untenable, as the respondent state has a zero-tolerance policy towards corruption. The court's direction for a fresh inquiry is a reasonable compromise, ensuring that the principles of natural justice are upheld while also protecting the public interest. I urge the court to consider the respondent state's concerns and the need to maintain the integrity of public services."
+      }
+    ],
+    "verdict": {
+      "verdict": "FAVOR_PLAINTIFF",
+      "confidence": 80,
+      "reasoning": [
+        "The termination of Ram Kumar's service without a proper departmental inquiry or show cause notice is a clear violation of the principles of natural justice, as enshrined in Article 311 of the Constitution of India.",
+        "The surveillance evidence, although relevant, is not sufficient to justify termination without a proper inquiry, as it has not been tested in a fair and transparent manner, and the petitioner has not been given an opportunity to cross-examine witnesses and challenge the evidence.",
+        "The Supreme Court's decision in Union of India v. Tulsiram Patel (1985) and Union of India vs. Mohan Lal Kapoor (1974) supports the petitioner's right to be heard before being dismissed from service, and the respondent's failure to provide a fair and impartial inquiry is a clear violation of his rights."
+      ],
+      "supporting_evidence": [
+        "Article 311 of the Constitution of India, which guarantees protection to government servants against arbitrary dismissal",
+        "The Supreme Court's decision in Union of India v. Tulsiram Patel (1985), which held that an opportunity of hearing is a mandatory requirement before passing an order of dismissal or removal",
+        "The Indian Evidence Act, 1872, which requires that evidence be produced and tested in a fair and transparent manner"
+      ]
+    },
+    "rounds_completed": 2
+  },
+  "audit": {
+    "fairness_score": 90,
+    "biased_terms": [],
+    "bias_types": [],
+    "recommendations": [
+      "The judge's verdict should explicitly state that the decision is based solely on the principles of natural justice and the evidence presented, without any implicit biases.",
+      "The court should ensure that all future proceedings are conducted in a fair and transparent manner, with equal opportunities for the petitioner and respondent to present their cases."
+    ],
+    "summary": "The judge's verdict appears to be fair and unbiased, with a clear reliance on established legal precedents and the principles of natural justice. However, to further ensure fairness, the court should explicitly state the basis for its decision and ensure that all proceedings are conducted in a transparent and impartial manner."
+  }
+}

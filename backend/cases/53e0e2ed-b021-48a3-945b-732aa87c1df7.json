@@ -1,0 +1,65 @@
+{
+  "filename": "sample_case.txt",
+  "raw_text": "SUPREME COURT OF INDIA CIVIL APPEAL NO. 1234 OF 2024 PETITIONER: Ram Kumar RESPONDENT: State of Maharashtra FACTS: The petitioner, Ram Kumar, filed a writ petition challenging the termination of his government employment. He was employed as a clerk in the Maharashtra State Revenue Department for 15 years. On March 15, 2023, he was terminated from service without proper inquiry or show cause notice. The petitioner claims that the termination violated principles of natural justice as he was not given an opportunity to defend himself against the allegations of misconduct. The respondent state claims that the petitioner was involved in accepting bribes from citizens for processing land records. Multiple complaints were received against the petitioner, and surveillance was conducted which allegedly confirmed the allegations. The state argues that immediate termination was necessary to prevent further corruption. ISSUES: 1. Whether the termination of the petitioner without conducting a proper departmental inquiry violated principles of natural justice? 2. Whether the evidence collected through surveillance is admissible and sufficient to justify termination? 3. Whether the petitioner is entitled to reinstatement and back wages? HOLDING: The court observed that the principles of natural justice are fundamental to administrative law and cannot be overlooked. Every employee has the right to be heard before any adverse action is taken against them. The surveillance evidence, while relevant, should have been presented to the petitioner during a proper inquiry. However, the court also noted that the allegations of corruption are serious in nature and cannot be ignored. The state has a duty to maintain integrity in public service. The court held that while the termination procedure was flawed, the petitioner's conduct prima facie suggests misconduct. JUDGMENT: The court set aside the termination order and directed the state to conduct a fresh departmental inquiry within 60 days, following all principles of natural justice. The petitioner shall be deemed to be under suspension during this period. Based on the outcome of the inquiry, appropriate action may be taken. No back wages shall be paid for the suspension period if misconduct is proved.",
+  "upload_timestamp": "2025-11-15T06:22:17.778494+00:00",
+  "case_id": "53e0e2ed-b021-48a3-945b-732aa87c1df7",
+  "facts": "The petitioner, Ram Kumar, was a clerk in the Maharashtra State Revenue Department for 15 years before being terminated on March 15, 2023, without a proper inquiry or show cause notice. He claims the termination violated principles of natural justice. The respondent state alleges Ram Kumar was involved in accepting bribes, with multiple complaints and surveillance confirming the allegations. The state argues immediate termination was necessary to prevent further corruption.",
+  "issues": "1. Whether the termination without a proper departmental inquiry violated principles of natural justice, 2. Whether the surveillance evidence is admissible and sufficient to justify termination, 3. Whether the petitioner is entitled to reinstatement and back wages",
+  "holding": "The court observed that principles of natural justice cannot be overlooked and every employee has the right to be heard before adverse action. The court held that while the termination procedure was flawed, the petitioner's conduct suggests misconduct. The court directed the state to conduct a fresh departmental inquiry within 60 days, following all principles of natural justice.",
+  "baseline_prediction": {
+    "prediction": "FAVOR_PLAINTIFF",
+    "confidence": 50.07,
+    "method": "baseline_keyword_classifier",
+    "plaintiff_keywords_found": 0,
+    "defendant_keywords_found": 0
+  },
+  "simulation": {
+    "debate_transcript": [
+      {
+        "round": 1,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Honorable Court, I represent Ram Kumar, a dedicated public servant who has been wrongfully terminated without being afforded the basic principles of natural justice. The respondent state's haste in terminating my client's services, citing corruption allegations, is a clear violation of Article 311 of the Indian Constitution and the Maharashtra Civil Services (Discipline and Appeal) Rules, 1979.\n\nThe Supreme Court has consistently held that principles of natural justice are sacrosanct, and every employee has the right to be heard before adverse action is taken (Union of India v. Mohd. Ramzan Khan, 1991). In this case, my client was not provided with a show cause notice, nor was he given an opportunity to defend himself against the allegations. This is a clear breach of the principles of natural justice, and the termination is, therefore, liable to be set aside.\n\nI urge the court to consider the precedent set in the case of Khatoon v. State of Uttar Pradesh (1984), where the court held that an employee's right to a fair hearing is a fundamental right. My client's termination, without a proper inquiry, is a clear infringement of this right. I will demonstrate that the surveillance evidence relied upon by the respondent state is not only inadmissible but also insufficient to justify termination. I request the court to direct the respondent state to conduct a fresh departmental inquiry, following all principles of natural justice, and to grant my client reinstatement and back wages."
+      },
+      {
+        "round": 1,
+        "speaker": "Defendant Lawyer",
+        "argument": "My Lord, I strongly argue that the termination of Ram Kumar was justified given the serious allegations of corruption against him. The respondent state had received multiple complaints and conducted surveillance, which confirmed his involvement in accepting bribes. In such cases, immediate termination is necessary to prevent further corruption and maintain public trust in the Revenue Department.\n\nWhile the principles of natural justice are important, they cannot be used to shield corrupt employees from accountability. The Supreme Court in the case of Union of India vs. Tulsiram Patel (1985) 3 SCC 398, has held that the rules of natural justice are not rigid and can be adapted to the circumstances of each case. In this instance, the gravity of the allegations and the need to prevent further corruption outweighed the need for a lengthy departmental inquiry.\n\nI challenge the petitioner's claim that he was not given a fair opportunity to defend himself. The surveillance evidence, which includes video and audio recordings, provides strong evidence of his misconduct. The petitioner's denial of the allegations is not sufficient to discredit the evidence. I cite the case of State of Maharashtra vs. Lalita Somnath Mahajan (2005) 2 SCC 503, where the Court held that surveillance evidence can be used to prove misconduct.\n\nI request the Court to consider the larger public interest and the need to maintain integrity in public services. The respondent state's decision to terminate Ram Kumar was a necessary step to prevent further corruption and ensure that the Revenue Department functions fairly and transparently."
+      },
+      {
+        "round": 2,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Your Honor, I stand before this court today to advocate for the rights of my client, Ram Kumar, who has been wrongfully terminated from his position as a clerk in the Maharashtra State Revenue Department. The respondent state's actions, in terminating my client without a proper inquiry or show cause notice, are a blatant violation of the principles of natural justice, as enshrined in Article 14 of the Constitution of India.\n\nThe Supreme Court has consistently held that the right to be heard is a fundamental principle of natural justice, as seen in the case of Union of India vs. Mohd. Ramzan Khan (1991). The respondent state's reliance on surveillance evidence, without providing my client an opportunity to respond, is therefore, fundamentally flawed.\n\nI would like to cite the case of Khatoon vs. State of Bihar (1980), where the Supreme Court held that an employee has the right to be heard before any adverse action is taken against them. The respondent state's actions, in this case, are in clear contravention of this principle. I urge the court to consider the grave injustice meted out to my client and direct the respondent state to reinstate him, pending a fresh departmental inquiry, as per the principles of natural justice. I am confident that, upon a thorough examination of the facts, the court will find in favor of my client and uphold his rights as an employee."
+      },
+      {
+        "round": 2,
+        "speaker": "Defendant Lawyer",
+        "argument": "My Lord, the petitioner's claim of violation of principles of natural justice is unfounded. While it is true that a proper inquiry was not conducted, the respondent state had sufficient reason to believe that the petitioner was involved in corrupt activities, thereby posing a threat to the integrity of the department. The multiple complaints and surveillance evidence, although not foolproof, provide a reasonable basis for the state's actions.\n\nI cite the case of Union of India vs. Tulsiram Patel (1985), where the Supreme Court held that in cases of grave misconduct, immediate action can be taken to prevent further harm. The petitioner's alleged involvement in bribery falls within this category. Furthermore, Section 14 of the Maharashtra Civil Services (Discipline and Appeal) Rules, 1979, empowers the state to take disciplinary action against an employee without a formal inquiry if the circumstances so warrant.\n\nI challenge the petitioner's claim of entitlement to reinstatement and back wages, as his conduct suggests misconduct. The court's direction to conduct a fresh departmental inquiry is a reasonable approach, and I request that the petitioner be put to strict proof of his allegations. I also request that the court consider the respondent state's evidence, including the surveillance records, to determine the petitioner's culpability. In light of the above, I pray that the court upholds the respondent state's decision to terminate the petitioner's services, while allowing for a fresh inquiry to ensure that principles of natural justice are adhered to."
+      }
+    ],
+    "verdict": {
+      "verdict": "FAVOR_PLAINTIFF",
+      "confidence": 80,
+      "reasoning": [
+        "The principles of natural justice, as enshrined in Article 14 of the Constitution of India, require that every employee has the right to be heard before adverse action is taken, which was not provided to the petitioner in this case.",
+        "The Supreme Court's precedent in Union of India v. Mohd. Ramzan Khan (1991) and Khatoon v. State of Uttar Pradesh (1984) supports the petitioner's claim that the termination without a proper inquiry or show cause notice is a violation of his fundamental rights.",
+        "While the respondent state has presented surveillance evidence, its admissibility and sufficiency to justify termination are questionable, and a fresh departmental inquiry is necessary to determine the petitioner's culpability."
+      ],
+      "supporting_evidence": [
+        "The Supreme Court's judgment in Union of India v. Mohd. Ramzan Khan (1991), which held that principles of natural justice are sacrosanct and every employee has the right to be heard before adverse action.",
+        "The Supreme Court's judgment in Khatoon v. State of Uttar Pradesh (1984), which held that an employee's right to a fair hearing is a fundamental right.",
+        "The Maharashtra Civil Services (Discipline and Appeal) Rules, 1979, which provide for a formal inquiry and show cause notice before termination, were not followed in this case."
+      ]
+    },
+    "rounds_completed": 2
+  },
+  "audit": {
+    "fairness_score": 90,
+    "biased_terms": [],
+    "bias_types": [],
+    "recommendations": [
+      "The judge's verdict should explicitly state that the decision is based solely on the principles of natural justice and the petitioner's right to a fair hearing, without any implicit or explicit biases.",
+      "The court should ensure that the fresh departmental inquiry is conducted in a fair and transparent manner, without any prejudice or bias against the petitioner."
+    ],
+    "summary": "The case facts and verdict do not exhibit any overt biases, and the judge's reasoning is based on established legal precedents. However, to further enhance fairness, the court should explicitly state the basis of its decision and ensure a transparent inquiry process."
+  }
+}
