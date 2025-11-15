@@ -1,0 +1,12 @@
+CASE TITLE: Smith v. Johnson
+
+FACTS:
+Plaintiff John Smith was driving his vehicle on Main Street when Defendant Jane Johnson, who was texting on her phone, ran a red light and collided with Plaintiff's vehicle. Plaintiff suffered injuries including a broken leg and incurred medical expenses of $50,000. Defendant admits to texting but claims the accident was unavoidable due to sudden brake failure.
+
+ISSUES:
+1. Was Defendant negligent in operating her vehicle while texting?
+2. Did Defendant's negligence cause Plaintiff's injuries?
+3. What damages, if any, is Plaintiff entitled to?
+
+HOLDING:
+The court finds Defendant negligent for texting while driving, which was the proximate cause of the accident. Plaintiff is awarded $50,000 in damages plus costs.
