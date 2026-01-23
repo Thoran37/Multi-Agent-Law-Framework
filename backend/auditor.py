@@ -1,5 +1,5 @@
 from typing import Dict, Any
-from agents import Auditor
+from .agents import Auditor
 
 
 class BiasAuditor:

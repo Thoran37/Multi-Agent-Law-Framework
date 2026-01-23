@@ -1,5 +1,5 @@
 from typing import Dict, Any, List
-from agents import PlaintiffLawyer, DefendantLawyer, Judge
+from .agents import PlaintiffLawyer, DefendantLawyer, Judge
 import asyncio
 
 

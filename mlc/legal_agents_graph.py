@@ -58,7 +58,12 @@ def call_agent(system_prompt: str, messages: List):
     input_text = f"{system_prompt}\n\n"
     
     for msg in messages:
-        role = "USER" if isinstance(msg, HumanMessage) else "AGENT"
+        if isinstance(msg, HumanMessage):
+            role = "USER"
+        elif isinstance(msg, SystemMessage):
+            role = "SYSTEM"
+        else:
+            role = "AGENT"
         input_text += f"{role}: {msg.content}\n"
         
     # Add a final cue for the agent to respond
@@ -139,14 +144,75 @@ def auditor_node(state: CaseState):
 
 def round_logic(state: CaseState):
     """Determines if the debate should continue or go to the judge."""
+    # Dynamic decision based on simple weights computed from the transcript.
+    # We compute a lightweight score for each lawyer (plaintiff/defendant)
+    # using keyword matches and message length. The party with the lower
+    # score is asked to speak next (they should rebut the stronger position).
     current_round = state.get("round", 0)
-    
-    if current_round < 3: 
-        print(f"--- (ROUND {current_round + 1} - CONTINUING DEBATE) ---")
-        return "plaintiff"
-    else:
+
+    MAX_ROUNDS = 6
+    if current_round >= MAX_ROUNDS:
         print("--- (DEBATE CONCLUDED - MOVING TO JUDGE) ---")
         return "judge"
+
+    def compute_scores(s: CaseState):
+        plaintiff_kws = [
+            'prove', 'evidence', 'liable', 'damages', 'injury', 'breach', 'violation', 'compensation'
+        ]
+        defendant_kws = [
+            'deny', 'no evidence', 'innocent', 'dismiss', 'acquitt', 'compliance', 'not proved', 'access', 'misuse'
+        ]
+
+        msgs = s.get('messages', [])
+        # Skip the initial human message(s) when assigning AI messages to speakers.
+        ai_messages = [m for m in msgs if isinstance(m, AIMessage)]
+
+        scores = {'plaintiff': 0.0, 'defendant': 0.0}
+
+        for idx, m in enumerate(ai_messages):
+            text = (m.content or '').lower()
+            # Heuristic: even-indexed AI messages -> plaintiff, odd -> defendant
+            speaker = 'plaintiff' if idx % 2 == 0 else 'defendant'
+
+            # Keyword counts
+            kw_count = 0
+            for kw in (plaintiff_kws + defendant_kws):
+                if kw in text:
+                    kw_count += text.count(kw)
+
+            # Length contribution (longer arguments -> higher score)
+            length_score = max(0, len(text) / 200.0)
+
+            # Combine
+            scores[speaker] += kw_count * 2.0 + length_score
+
+        return scores
+
+    scores = compute_scores(state)
+    p_score = scores['plaintiff']
+    d_score = scores['defendant']
+
+    print(f"[round_logic] round={current_round} scores -> plaintiff={p_score:.2f}, defendant={d_score:.2f}")
+
+    # If scores are very close, alternate based on last speaker
+    if abs(p_score - d_score) < 0.5:
+        # Determine last AI speaker (if any)
+        ai_msgs = [m for m in state.get('messages', []) if isinstance(m, AIMessage)]
+        if not ai_msgs:
+            next_speaker = 'plaintiff'
+        else:
+            last_idx = len(ai_msgs) - 1
+            last_speaker = 'plaintiff' if last_idx % 2 == 0 else 'defendant'
+            # alternate: if last was plaintiff, ask defendant next, else plaintiff
+            next_speaker = 'defendant' if last_speaker == 'plaintiff' else 'plaintiff'
+    else:
+        # Ask the weaker party (lower score) to respond / rebut
+        next_speaker = 'plaintiff' if p_score < d_score else 'defendant'
+
+    print(f"--- (ROUND {current_round + 1} - NEXT SPEAKER: {next_speaker.upper()}) ---")
+
+    # Map to graph edge keys: allow defendant to be chosen again, or go to judge
+    return next_speaker
 
 graph = StateGraph(CaseState)
 
@@ -162,8 +228,10 @@ graph.add_conditional_edges(
     "defendant",
     round_logic,
     {
-        "plaintiff": "plaintiff", 
-        "judge": "judge"          
+        "plaintiff": "plaintiff",
+        # allow the defender to speak again if weights choose it
+        "defendant": "defendant",
+        "judge": "judge"
     }
 )
 
@@ -183,8 +251,29 @@ if __name__ == "__main__":
     Landlord claims tenant denied access and misused heater.
     """
 
+    # Allow selecting jurisdiction at the first step so the debate uses
+    # jurisdiction-specific laws and reasoning. Options: india, us, paris,
+    # england, australia (case-insensitive). Default is India.
+    COUNTRIES = ["India", "US", "Paris", "England", "Australia"]
+    print("Select jurisdiction for this case:")
+    for i, c in enumerate(COUNTRIES, start=1):
+        print(f"  {i}) {c}")
+    sel = input("Enter number (default 1): ").strip()
+    try:
+        idx = int(sel) - 1 if sel else 0
+        if idx < 0 or idx >= len(COUNTRIES):
+            idx = 0
+    except Exception:
+        idx = 0
+    jurisdiction = COUNTRIES[idx]
+
+    # Put the jurisdiction as a SystemMessage so call_agent will include it
+    # in the prompt as a system-level instruction for all agents.
     initial_state = CaseState(
-        messages=[HumanMessage(content="CASE DETAILS:\n" + case_details)],
+        messages=[
+            SystemMessage(content=f"JURISDICTION: {jurisdiction}. Apply legal standards and precedents relevant to {jurisdiction}."),
+            HumanMessage(content="CASE DETAILS:\n" + case_details)
+        ],
         round=0
     )
 

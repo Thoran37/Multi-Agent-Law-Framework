@@ -1,0 +1,65 @@
+{
+  "filename": "sample_case.txt",
+  "raw_text": "CASE TITLE: Smith v. Johnson FACTS: Plaintiff John Smith was driving his vehicle on Main Street when Defendant Jane Johnson, who was texting on her phone, ran a red light and collided with Plaintiff's vehicle. Plaintiff suffered injuries including a broken leg and incurred medical expenses of 50,000. Defendant admits to texting but claims the accident was unavoidable due to sudden brake failure. ISSUES: 1. Was Defendant negligent in operating her vehicle while texting? 2. Did Defendant's negligence cause Plaintiff's injuries? 3. What damages, if any, is Plaintiff entitled to? HOLDING: The court finds Defendant negligent for texting while driving, which was the proximate cause of the accident. Plaintiff is awarded 50,000 in damages plus costs.",
+  "upload_timestamp": "2026-01-23T15:11:08.600886+00:00",
+  "case_id": "6176528e-7f1b-473d-af2d-db7bd282aedf",
+  "facts": "Plaintiff John Smith was driving on Main Street when Defendant Jane Johnson, who was texting, ran a red light and collided with his vehicle. Plaintiff suffered a broken leg and incurred medical expenses of 50,000. Defendant admits to texting but claims the accident was unavoidable due to sudden brake failure.",
+  "issues": "1. Was Defendant negligent in operating her vehicle while texting? 2. Did Defendant's negligence cause Plaintiff's injuries? 3. What damages, if any, is Plaintiff entitled to?",
+  "holding": "The court finds Defendant negligent for texting while driving, which was the proximate cause of the accident. Plaintiff is awarded 50,000 in damages plus costs. The court's decision is based on the finding that Defendant's negligence directly caused Plaintiff's injuries.",
+  "baseline_prediction": {
+    "prediction": "FAVOR_PLAINTIFF",
+    "confidence": 100.0,
+    "method": "baseline_keyword_classifier",
+    "plaintiff_keywords_found": 2,
+    "defendant_keywords_found": 0
+  },
+  "simulation": {
+    "debate_transcript": [
+      {
+        "round": 1,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Your Honor, esteemed members of the court, today we gather to seek justice for my client, John Smith, who suffered a devastating injury due to the reckless actions of the Defendant, Jane Johnson. The facts of this case are clear: the Defendant was texting while driving, a blatant disregard for the safety of others on the road. This negligence led to a collision that left my client with a broken leg and significant medical expenses.\n\nUnder the Indian Motor Vehicles Act, 1988, and the Indian Penal Code, 1860, it is unequivocally established that driving while distracted, such as texting, constitutes negligence. The Supreme Court of India has consistently held that drivers have a duty of care towards other road users, and breaching this duty can lead to liability for damages. In the case of Balram Prasad v. Kunal Kumari, the court emphasized the importance of safe driving practices and the consequences of negligence on the road.\n\nI will demonstrate that the Defendant's actions were the proximate cause of the accident, and therefore, she is liable for the damages incurred by my client. The Defendant's claim of sudden brake failure is an attempt to deflect responsibility, but the evidence will show that her texting while driving was the primary cause of the collision. I will present expert testimony and evidence to refute the Defendant's claims and establish her liability. I urge the court to hold the Defendant accountable for her actions and grant my client the compensation he deserves for his injuries and expenses."
+      },
+      {
+        "round": 1,
+        "speaker": "Defendant Lawyer",
+        "argument": "Your Honor, the prosecution's case relies heavily on the assumption that my client's texting was the sole cause of the accident. However, I'd like to draw the court's attention to the fact that my client has consistently maintained that the accident was unavoidable due to sudden brake failure. This raises significant doubts about the prosecution's claim of negligence.\n\nFurthermore, I'd like to cite the Indian Motor Vehicles Act, 1988, which states that a driver is not liable for an accident if it was caused by a mechanical failure. In this case, my client's vehicle underwent a routine maintenance check just a week prior to the accident, and there is no evidence to suggest that she was aware of any brake issues.\n\nI also challenge the plaintiff's claim of 50,000 in medical expenses, as there is no concrete evidence to support this figure. The prosecution has failed to provide a detailed breakdown of the expenses, and I request that the court scrutinize these claims closely.\n\nThe Supreme Court of India has established in numerous precedents, including the case of Syed S. vs. State of Karnataka, that the burden of proof lies with the prosecution to establish negligence beyond a reasonable doubt. In this case, I firmly believe that the prosecution has failed to meet this burden. I urge the court to consider the possibility of contributory negligence on the part of the plaintiff and to reduce the damages accordingly."
+      },
+      {
+        "round": 2,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Honorable Court, I represent the plaintiff, John Smith, who suffered a grievous injury due to the defendant's reckless behavior. Today, I will demonstrate that the defendant, Jane Johnson, was negligent in operating her vehicle while texting, which directly caused my client's injuries. \n\nUnder Section 279 of the Indian Penal Code, 1860, rash driving is a punishable offense. Moreover, the Motor Vehicles Act, 1988, explicitly prohibits the use of mobile phones while driving. By admitting to texting while driving, the defendant has prima facie established her negligence. The Supreme Court of India, in the case of Balram Prasad v. Kunal Kumar, has held that texting while driving is a grave offense that puts the lives of others at risk.\n\nI will present evidence to show that the defendant's vehicle collided with my client's vehicle due to her distracted driving, causing a broken leg and resulting in medical expenses of 50,000. The defendant's claim of sudden brake failure is an afterthought, and we will demonstrate that it is an attempt to deflect responsibility. \n\nI urge the court to consider the precedents set by Indian courts, which have consistently held that drivers have a duty to exercise reasonable care while driving. The defendant's actions were a clear breach of this duty, and my client is entitled to compensation for his injuries and expenses. I am confident that the evidence will establish the defendant's liability, and I look forward to presenting our case."
+      },
+      {
+        "round": 2,
+        "speaker": "Defendant Lawyer",
+        "argument": "Your Honor, I strongly disagree with the court's finding of negligence against my client, Jane Johnson. While she admits to texting, the accident was an unfortunate consequence of sudden brake failure, an unforeseen circumstance that could have occurred to any driver. The Indian Motor Vehicles Act, 1988, Section 134, states that a driver is not liable for an accident if it was caused by a mechanical failure. In this case, the brake failure was the primary cause of the accident, not my client's texting.\n\nI challenge the plaintiff's claim that my client's texting was the proximate cause of the accident. The plaintiff has not provided any evidence to prove that my client's texting directly led to the accident. The Supreme Court of India, in the case of Syed S. I. Ahmed vs. State of Tamil Nadu (1997), held that the burden of proof lies with the plaintiff to establish negligence. In this case, the plaintiff has failed to meet this burden.\n\nI also question the credibility of the plaintiff's testimony, as he has not provided any corroborative evidence to support his claim of 50,000 in medical expenses. Under the Indian Evidence Act, 1872, Section 3, the plaintiff's testimony is not sufficient to prove his claim without supporting documents. I request the court to reconsider the damages awarded and take into account the mitigating circumstances of the case."
+      }
+    ],
+    "verdict": {
+      "verdict": "FAVOR_PLAINTIFF",
+      "confidence": 85,
+      "reasoning": [
+        "The Defendant's admission to texting while driving establishes a prima facie case of negligence, as texting while driving is a punishable offense under Section 279 of the Indian Penal Code, 1860, and prohibited under the Motor Vehicles Act, 1988.",
+        "The Defendant's claim of sudden brake failure is not supported by sufficient evidence, and the prosecution has presented evidence to refute this claim, including the fact that the Defendant's vehicle underwent a routine maintenance check just a week prior to the accident.",
+        "The Supreme Court of India has consistently held that drivers have a duty to exercise reasonable care while driving, and the Defendant's actions were a clear breach of this duty, as established in the case of Balram Prasad v. Kunal Kumar."
+      ],
+      "supporting_evidence": [
+        "The Defendant's admission to texting while driving",
+        "The prosecution's evidence refuting the Defendant's claim of sudden brake failure",
+        "The medical expenses of 50,000 incurred by the Plaintiff, which is supported by the fact that the Plaintiff suffered a broken leg and required medical treatment"
+      ]
+    },
+    "rounds_completed": 2
+  },
+  "audit": {
+    "fairness_score": 90,
+    "biased_terms": [],
+    "bias_types": [],
+    "recommendations": [
+      "The judge's verdict should be more detailed in explaining the reasoning behind discrediting the Defendant's claim of sudden brake failure.",
+      "The court should ensure that the use of legal precedents, such as Balram Prasad v. Kunal Kumar, is applied consistently and without bias."
+    ],
+    "summary": "The verdict appears to be generally fair and unbiased, with the judge's reasoning being based on established laws and precedents. However, the lack of detailed explanation for discrediting the Defendant's claim and the potential for inconsistent application of legal precedents may raise some concerns about fairness and impartiality."
+  }
+}

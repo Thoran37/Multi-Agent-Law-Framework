@@ -5,8 +5,9 @@ from pathlib import Path
 from typing import Dict, Any
 import re
 
-CASES_DIR = Path("/app/backend/cases")
-CASES_DIR.mkdir(exist_ok=True)
+CASES_DIR = Path(__file__).parent / "cases"
+# Ensure cases dir exists (create parents if needed)
+CASES_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def extract_text_from_pdf(file_content: bytes) -> str:

@@ -1,0 +1,75 @@
+{
+  "filename": "sample_case.txt",
+  "raw_text": "CASE TITLE: Smith v. Johnson FACTS: Plaintiff John Smith was driving his vehicle on Main Street when Defendant Jane Johnson, who was texting on her phone, ran a red light and collided with Plaintiff's vehicle. Plaintiff suffered injuries including a broken leg and incurred medical expenses of 50,000. Defendant admits to texting but claims the accident was unavoidable due to sudden brake failure. ISSUES: 1. Was Defendant negligent in operating her vehicle while texting? 2. Did Defendant's negligence cause Plaintiff's injuries? 3. What damages, if any, is Plaintiff entitled to? HOLDING: The court finds Defendant negligent for texting while driving, which was the proximate cause of the accident. Plaintiff is awarded 50,000 in damages plus costs.",
+  "upload_timestamp": "2026-01-23T15:47:22.031878+00:00",
+  "case_id": "a563bdde-d8c5-4493-846b-14805080af98",
+  "facts": "Plaintiff John Smith was driving on Main Street when Defendant Jane Johnson, who was texting, ran a red light and collided with Plaintiff's vehicle. Plaintiff suffered a broken leg and incurred medical expenses of 50,000. Defendant admits to texting but claims the accident was unavoidable due to sudden brake failure. The accident occurred due to Defendant's actions while driving.",
+  "issues": "1. Was Defendant negligent in operating her vehicle while texting? 2. Did Defendant's negligence cause Plaintiff's injuries? 3. What damages, if any, is Plaintiff entitled to?",
+  "holding": "The court finds Defendant negligent for texting while driving, which was the proximate cause of the accident. Plaintiff is awarded 50,000 in damages plus costs. The court's decision is based on the finding that Defendant's negligence led to the accident and resulting injuries.",
+  "jurisdiction": "India",
+  "related_laws": [
+    {
+      "citation": "Section 2(47) of the Motor Vehicles Act, 1988",
+      "summary": "Defines 'driver' and implies the duty of care while operating a vehicle, relevant to determining Defendant's negligence."
+    },
+    {
+      "citation": "Section 118 of the Motor Vehicles Act, 1988",
+      "summary": "Makes using a mobile phone while driving an offense, supporting the claim of Defendant's negligence."
+    },
+    {
+      "citation": "Section 304A of the Indian Penal Code, 1860",
+      "summary": "Pertains to causing death or injury by negligence, which could apply if the accident resulted in more severe consequences."
+    },
+    {
+      "citation": "Section 106 of the Indian Evidence Act, 1872",
+      "summary": "Concerns the burden of proving facts, particularly relevant to the Defendant's claim of sudden brake failure as an unavoidable accident."
+    },
+    {
+      "citation": "Section 51 of the Consumer Protection Act, 2019 (for damages under consumer law context if applicable)",
+      "summary": "Could be relevant if the vehicle or its parts are considered defective, leading to the accident, though not directly applicable in this scenario."
+    },
+    {
+      "citation": "The Law of Torts, specifically the principle of 'Res Ipsa Loquitur'",
+      "summary": "Implies negligence on the part of the Defendant when an accident occurs under circumstances that would not normally happen without negligence, relevant to the accident's circumstances."
+    }
+  ],
+  "simulation": {
+    "debate_transcript": [
+      {
+        "round": 1,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Honorable Judge, today we gather to seek justice for my client, John Smith, who suffered a devastating injury due to the reckless actions of Defendant Jane Johnson. The facts are clear: Defendant was texting while driving, ran a red light, and collided with my client's vehicle, causing a broken leg and significant medical expenses.\n\nUnder Section 304A of the Indian Penal Code, any person who causes death or injury to any other person by doing a rash or negligent act, not intending to cause death or injury, shall be punished. In this case, Defendant's actions were not only rash but also a blatant disregard for the safety of others on the road. The Motor Vehicles Act, 1988, also prohibits the use of mobile phones while driving, making Defendant's actions a clear violation of the law.\n\nThe Supreme Court of India has consistently held that negligence can be established by showing a breach of duty, which in this case is the duty to drive safely and follow traffic rules. In the case of State of Haryana vs. Jasbir Singh, the Court emphasized the importance of safe driving practices and the consequences of reckless behavior on the road.\n\nI will demonstrate that Defendant's negligence was the proximate cause of the accident and resulting injuries, entitling my client to damages. The medical expenses of 50,000 are a direct result of Defendant's actions, and I will argue that this amount is a reasonable and just compensation for my client's suffering. I urge the court to hold Defendant liable for her reckless behavior and grant my client the justice he deserves."
+      },
+      {
+        "round": 1,
+        "speaker": "Defendant Lawyer",
+        "argument": "Your Honor, I strongly disagree with the court's finding that my client, Jane Johnson, was solely negligent in this matter. While she admits to texting, the sudden brake failure in her vehicle was an unforeseen circumstance that contributed to the accident. I cite the Indian Motor Vehicles Act, 1988, Section 134, which states that a driver is not liable if the accident occurs due to a mechanical failure.\n\nI challenge the plaintiff's claim that my client's texting was the proximate cause of the accident. The plaintiff has not provided any evidence to prove that my client's texting was the sole reason for the collision. I request the court to consider the testimony of the independent witness, who stated that the traffic light was malfunctioning at the time of the accident, which could have contributed to the collision.\n\nFurthermore, I question the credibility of the plaintiff's testimony, as he has a history of making false claims. I request the court to reconsider the damages awarded, as the plaintiff has not provided any medical records to substantiate the claim of 50,000 in medical expenses. I cite the precedent set in the case of Balco v. Kaiser Aluminum, which states that the plaintiff must provide sufficient evidence to prove the extent of their damages. In light of these arguments, I request the court to reduce the damages awarded and consider the contributory negligence of the plaintiff."
+      },
+      {
+        "round": 2,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Honorable Court, I stand before you today to advocate for the rights of my client, John Smith, who has suffered grievous injuries due to the reckless actions of the Defendant, Jane Johnson. The facts of the case are clear: the Defendant was texting while driving, a blatant disregard for the safety of others on the road. This negligence led to a catastrophic accident, resulting in a broken leg and significant medical expenses for my client.\n\nAs per Section 304-A of the Indian Penal Code, whoever causes death or injury to any person by doing any rash or negligent act, shall be punished. In this case, the Defendant's actions were not only negligent but also a clear violation of Section 184 of the Motor Vehicles Act, 1988, which prohibits dangerous driving.\n\nThe Hon'ble Supreme Court of India has also emphasized the importance of safe driving in various judgments, including the landmark case of Balram Prasad v. Kunal Saha, where it was held that rash and negligent driving can lead to serious consequences. I urge the Court to consider these precedents and hold the Defendant liable for her actions.\n\nI will demonstrate, through evidence and testimony, that the Defendant's negligence was the direct cause of the accident and my client's subsequent injuries. I will also establish that the damages claimed by my client are reasonable and justified, considering the extent of his injuries and the financial burden imposed upon him. I request the Court to consider the merits of this case and grant my client the compensation he deserves."
+      },
+      {
+        "round": 2,
+        "speaker": "Defendant Lawyer",
+        "argument": "Your Honor, while my client, Jane Johnson, admits to texting while driving, we strongly argue that the accident was not solely caused by her negligence. The prosecution's claim that texting was the proximate cause of the accident is speculative and lacks concrete evidence. We cite the Indian Motor Vehicles Act, 1988, which requires the prosecution to prove beyond reasonable doubt that the defendant's actions were the direct cause of the accident.\n\nFurthermore, we challenge the plaintiff's claim of 50,000 in medical expenses, as there is no concrete evidence to support this amount. We request the court to scrutinize the medical bills and receipts to verify their authenticity. Additionally, we argue that the plaintiff's injuries may have been exacerbated by pre-existing conditions, which should be taken into account when determining damages.\n\nIn the case of Syed Sadiq vs. State of Kerala (2014), the Kerala High Court held that mere negligence is not sufficient to establish liability; there must be a clear causal link between the defendant's actions and the plaintiff's injuries. We argue that this principle applies in our case, and the prosecution has failed to establish a direct causal link between my client's texting and the accident. We urge the court to consider these factors and reduce the damages awarded to the plaintiff."
+      }
+    ],
+    "verdict": {
+      "verdict": "FAVOR_PLAINTIFF",
+      "confidence": 85,
+      "reasoning": [
+        "The Defendant's admission to texting while driving constitutes a clear breach of duty to drive safely and follow traffic rules, as mandated by the Motor Vehicles Act, 1988, and established by the Supreme Court of India in various judgments.",
+        "The Plaintiff has provided sufficient evidence to establish a direct causal link between the Defendant's negligence and the accident, including the fact that the Defendant ran a red light while texting and collided with the Plaintiff's vehicle.",
+        "The Defendant's claim of sudden brake failure is not supported by sufficient evidence, and the testimony of the independent witness regarding the malfunctioning traffic light is not conclusive enough to absolve the Defendant of liability."
+      ],
+      "supporting_evidence": [
+        "The Defendant's admission to texting while driving, which is a clear violation of the Motor Vehicles Act, 1988, and a breach of duty to drive safely.",
+        "The medical expenses of 50,000 incurred by the Plaintiff, which are a direct result of the accident and the Defendant's negligence.",
+        "The precedent set by the Supreme Court of India in the case of Balram Prasad v. Kunal Saha, which emphasizes the importance of safe driving and the consequences of rash and negligent driving."
+      ]
+    },
+    "rounds_completed": 2
+  }
+}

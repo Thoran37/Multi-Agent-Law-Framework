@@ -1,0 +1,75 @@
+{
+  "filename": "sample_case.txt",
+  "raw_text": "CASE TITLE: Smith v. Johnson FACTS: Plaintiff John Smith was driving his vehicle on Main Street when Defendant Jane Johnson, who was texting on her phone, ran a red light and collided with Plaintiff's vehicle. Plaintiff suffered injuries including a broken leg and incurred medical expenses of 50,000. Defendant admits to texting but claims the accident was unavoidable due to sudden brake failure. ISSUES: 1. Was Defendant negligent in operating her vehicle while texting? 2. Did Defendant's negligence cause Plaintiff's injuries? 3. What damages, if any, is Plaintiff entitled to? HOLDING: The court finds Defendant negligent for texting while driving, which was the proximate cause of the accident. Plaintiff is awarded 50,000 in damages plus costs.",
+  "upload_timestamp": "2026-01-23T15:59:59.076368+00:00",
+  "jurisdiction": "India",
+  "case_id": "7e9553fb-d054-43a7-9ca9-bb90f9af785a",
+  "facts": "Plaintiff John Smith was driving on Main Street when Defendant Jane Johnson, who was texting, ran a red light and collided with Plaintiff's vehicle. Plaintiff suffered a broken leg and incurred medical expenses of 50,000. Defendant admits to texting but claims the accident was unavoidable due to sudden brake failure.",
+  "issues": "1. Was Defendant negligent in operating her vehicle while texting? 2. Did Defendant's negligence cause Plaintiff's injuries? 3. What damages, if any, is Plaintiff entitled to?",
+  "holding": "The court finds Defendant negligent for texting while driving, which was the proximate cause of the accident. Plaintiff is awarded 50,000 in damages plus costs. The court's decision is based on the finding that Defendant's negligence directly caused Plaintiff's injuries.",
+  "related_laws": [
+    {
+      "citation": "Section 2(47) of the Motor Vehicles Act, 1988",
+      "summary": "Defines 'driver' to establish Defendant's responsibility for operating the vehicle."
+    },
+    {
+      "citation": "Section 118 of the Motor Vehicles Act, 1988",
+      "summary": "Makes using a mobile phone while driving an offense, supporting the claim of negligence."
+    },
+    {
+      "citation": "Section 304-A of the Indian Penal Code, 1860",
+      "summary": "Pertains to causing death or injury by negligence, relevant to determining liability for the accident."
+    },
+    {
+      "citation": "Section 106 of the Indian Evidence Act, 1872",
+      "summary": "Places the burden of proof on the Defendant to prove that the accident was due to brake failure, not texting."
+    },
+    {
+      "citation": "Section 9 of the Consumer Protection Act, 1986 (for damages)",
+      "summary": "Provides for compensation for damages suffered by the Plaintiff due to the Defendant's negligence."
+    },
+    {
+      "citation": "Section 73 of the Indian Contract Act, 1872",
+      "summary": "Allows for compensation for breach of duty, applicable to the Defendant's admitted negligence."
+    }
+  ],
+  "simulation": {
+    "debate_transcript": [
+      {
+        "round": 1,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Your Honor, esteemed members of the court, today we gather to seek justice for my client, John Smith, who suffered a devastating injury due to the reckless actions of the Defendant, Jane Johnson. The facts of this case are clear: Defendant Johnson was texting while driving, a blatant disregard for the safety of others on the road. This negligence is a clear violation of Section 184 of the Motor Vehicles Act, 1988, which prohibits reckless driving.\n\nThe Defendant's admission to texting while driving is a damning indictment of her culpability. The claim of sudden brake failure is an attempt to deflect responsibility, but it is a weak defense that does not hold up to scrutiny. The Indian courts have consistently held that drivers have a duty to exercise reasonable care while operating a vehicle, as established in the case of Syed Sadaqat Ali vs. Divisional Manager, United India Insurance Co. Ltd.\n\nI will demonstrate through evidence and testimony that Defendant Johnson's negligence was the proximate cause of the accident, and therefore, she is liable for the damages suffered by my client. The medical expenses of 50,000 are a direct result of the accident, and my client is entitled to compensation for the harm caused. I will also argue that the Defendant's actions warrant punitive damages, as her reckless behavior put the lives of others at risk. I am confident that the evidence will establish the Defendant's liability, and I look forward to presenting our case."
+      },
+      {
+        "round": 1,
+        "speaker": "Defendant Lawyer",
+        "argument": "Your Honor, I strongly disagree with the court's finding of negligence against my client, Jane Johnson. While she admits to texting, the evidence suggests that the accident was caused by a sudden brake failure, an unforeseen circumstance beyond her control. The plaintiff's claim of negligence relies heavily on the fact that my client was texting, but this alone does not establish a direct causal link to the accident.\n\nI cite the precedent set in the case of Syed Sadaqat Ali vs. Divisional Manager, United India Insurance Co. Ltd. (2013), where the court held that the proximate cause of an accident must be established to determine liability. In this case, the brake failure was the proximate cause, not my client's texting.\n\nFurthermore, I challenge the plaintiff's claim of 50,000 in medical expenses, as there is no conclusive evidence to prove that the entirety of these expenses were incurred solely due to the accident. I request the court to consider the doctrine of contributory negligence, as the plaintiff's own actions, such as not wearing a seatbelt, may have contributed to the severity of his injuries.\n\nUnder the Indian Motor Vehicles Act, 1988, and the Consumer Protection Act, 1986, my client is not liable for damages if the accident was caused by a manufacturing defect, such as brake failure. I urge the court to reconsider its decision and take into account the complexities of this case, rather than relying solely on the fact that my client was texting while driving."
+      },
+      {
+        "round": 2,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Honorable Court, I represent John Smith, the plaintiff, in this matter. The facts of the case are clear: Defendant Jane Johnson was texting while driving, ran a red light, and collided with my client's vehicle, causing him to suffer a broken leg and incur significant medical expenses. \n\nI argue that Defendant's actions constitute gross negligence, as she prioritized texting over the safety of other road users. Section 184 of the Motor Vehicles Act, 1988, clearly states that any person driving a vehicle must have proper control over the vehicle. Texting while driving is a blatant violation of this provision. \n\nThe Defendant's claim of sudden brake failure is an attempt to deflect responsibility. However, the evidence will show that her vehicle's brake system was functioning properly, and the accident was solely caused by her reckless behavior. \n\nThe Indian judiciary has consistently held that negligence can be established through circumstantial evidence. In the case of Syed S. Hasan vs. Government of NCT of Delhi, the Delhi High Court ruled that the doctrine of res ipsa loquitur applies when the accident is of a kind that ordinarily does not occur in the absence of someone's negligence. \n\nI will demonstrate that the Defendant's negligence was the proximate cause of my client's injuries and that he is entitled to damages for his medical expenses, pain, and suffering. I request the Court to hold the Defendant liable for her actions and grant my client the compensation he deserves."
+      },
+      {
+        "round": 2,
+        "speaker": "Defendant Lawyer",
+        "argument": "Your Honor, while my client, Jane Johnson, acknowledges texting while driving, we strongly contest the claim that her actions were the sole cause of the accident. The plaintiff's allegations are based on an incomplete understanding of the events leading up to the collision. We argue that the sudden brake failure, which my client experienced, was an unforeseen circumstance that contributed significantly to the accident.\n\nFurthermore, we challenge the plaintiff's assertion that my client's texting was the proximate cause of the accident. Under Indian law, specifically Section 304-A of the Indian Penal Code, negligence must be proven beyond a reasonable doubt. We contend that the plaintiff has failed to establish a direct causal link between my client's texting and the accident.\n\nAdditionally, we question the credibility of the plaintiff's testimony, as he has failed to provide any corroborating evidence to support his claims. We also point out that the plaintiff's vehicle was not properly maintained, which may have contributed to the severity of the injuries sustained.\n\nIn light of these factors, we request the court to reconsider the damages awarded to the plaintiff. We cite the precedent set in the case of Syed Akbar v. State of Karnataka (2001), which emphasizes the importance of considering all contributing factors in determining liability. We urge the court to reduce the damages awarded, taking into account the plaintiff's potential contributory negligence and the unforeseen circumstances of the brake failure."
+      }
+    ],
+    "verdict": {
+      "verdict": "FAVOR_PLAINTIFF",
+      "confidence": 85,
+      "reasoning": [
+        "The Defendant's admission to texting while driving constitutes a clear violation of Section 184 of the Motor Vehicles Act, 1988, which prohibits reckless driving.",
+        "The Indian courts have consistently held that drivers have a duty to exercise reasonable care while operating a vehicle, as established in the case of Syed Sadaqat Ali vs. Divisional Manager, United India Insurance Co. Ltd.",
+        "The Defendant's claim of sudden brake failure is not supported by sufficient evidence, and the Plaintiff has demonstrated that the Defendant's negligence was the proximate cause of the accident."
+      ],
+      "supporting_evidence": [
+        "The Defendant's admission to texting while driving",
+        "The medical expenses of 50,000 incurred by the Plaintiff as a result of the accident",
+        "The precedent set in the case of Syed Sadaqat Ali vs. Divisional Manager, United India Insurance Co. Ltd., which establishes the duty of care for drivers"
+      ]
+    },
+    "rounds_completed": 2
+  }
+}

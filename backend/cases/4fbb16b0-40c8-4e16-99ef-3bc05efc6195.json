@@ -1,0 +1,71 @@
+{
+  "filename": "sample_case.txt",
+  "raw_text": "CASE TITLE: Smith v. Johnson FACTS: Plaintiff John Smith was driving his vehicle on Main Street when Defendant Jane Johnson, who was texting on her phone, ran a red light and collided with Plaintiff's vehicle. Plaintiff suffered injuries including a broken leg and incurred medical expenses of 50,000. Defendant admits to texting but claims the accident was unavoidable due to sudden brake failure. ISSUES: 1. Was Defendant negligent in operating her vehicle while texting? 2. Did Defendant's negligence cause Plaintiff's injuries? 3. What damages, if any, is Plaintiff entitled to? HOLDING: The court finds Defendant negligent for texting while driving, which was the proximate cause of the accident. Plaintiff is awarded 50,000 in damages plus costs.",
+  "upload_timestamp": "2026-01-23T15:52:59.486739+00:00",
+  "case_id": "4fbb16b0-40c8-4e16-99ef-3bc05efc6195",
+  "facts": "Plaintiff John Smith was driving on Main Street when Defendant Jane Johnson, who was texting, ran a red light and collided with his vehicle. Plaintiff suffered a broken leg and incurred medical expenses of 50,000. Defendant admits to texting but claims the accident was unavoidable due to sudden brake failure. The accident occurred due to Defendant's actions while driving.",
+  "issues": "1. Was Defendant negligent in operating her vehicle while texting? 2. Did Defendant's negligence cause Plaintiff's injuries? 3. What damages, if any, is Plaintiff entitled to?",
+  "holding": "The court finds Defendant negligent for texting while driving, which was the proximate cause of the accident. Plaintiff is awarded 50,000 in damages plus costs. The court's decision is based on the finding that Defendant's negligence directly caused Plaintiff's injuries.",
+  "jurisdiction": "US",
+  "related_laws": [
+    {
+      "citation": "49 U.S.C. § 32502 (Distracted Driving Law)",
+      "summary": "Relevant because it prohibits texting while driving, which Defendant admitted to doing."
+    },
+    {
+      "citation": "Restatement (Second) of Torts § 282 (Negligence)",
+      "summary": "Relevant because it defines negligence as a breach of duty to exercise reasonable care, which Defendant breached by texting while driving."
+    },
+    {
+      "citation": "Restatement (Second) of Torts § 431 (Proximate Cause)",
+      "summary": "Relevant because it explains how Defendant's negligence (texting while driving) was the direct cause of the accident and Plaintiff's injuries."
+    },
+    {
+      "citation": "42 U.S.C. § 1983 (Civil Rights Act)",
+      "summary": "Not directly relevant, but could be applicable if Plaintiff's injuries were a result of a civil rights violation, such as reckless disregard for safety."
+    },
+    {
+      "citation": "State-specific Vehicle Code (e.g., Cal. Veh. Code § 23123.5)",
+      "summary": "Relevant because it prohibits texting while driving and provides a basis for finding Defendant negligent."
+    }
+  ],
+  "simulation": {
+    "debate_transcript": [
+      {
+        "round": 1,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Your Honor, esteemed members of the court, today we gather to seek justice for my client, John Smith, who suffered a devastating injury due to the reckless actions of Defendant Jane Johnson. The facts of this case are clear: Defendant was texting while driving, ran a red light, and collided with my client's vehicle, causing a severe broken leg and significant medical expenses.\n\nI will demonstrate that Defendant's negligence was the direct cause of the accident, and therefore, she must be held liable for the damages incurred by my client. The Indian Motor Vehicles Act, 1988, and the Indian Penal Code, 1860, clearly prohibit reckless driving and impose a duty of care on drivers to exercise caution while operating a vehicle.\n\nThe Supreme Court of India, in the case of Balram Prasad v. Kunal Kumar, (2015) 14 SCC 717, has established that texting while driving constitutes gross negligence. I will present evidence that Defendant's actions were in clear violation of this precedent, and her negligence directly caused the accident.\n\nI anticipate that the Defendant may argue that the accident was unavoidable due to sudden brake failure. However, I will demonstrate that this claim is unfounded and that the Defendant's texting was the primary cause of the accident. I will also present expert testimony and evidence to establish that my client's injuries were a direct result of the Defendant's negligence.\n\nI request the court to hold the Defendant liable for her actions and award my client the damages he is entitled to, as per the provisions of the Indian Motor Vehicles Act and the Code of Civil Procedure, 1908."
+      },
+      {
+        "round": 1,
+        "speaker": "Defendant Lawyer",
+        "argument": "Your Honor, I strongly disagree with the court's findings. While my client, Jane Johnson, admits to texting, the proximate cause of the accident was not solely her negligence. The sudden brake failure in her vehicle was an unforeseen circumstance that contributed to the accident. I cite the Indian Motor Vehicles Act, 1988, which states that a driver is not liable for an accident caused by a mechanical failure beyond their control (Section 134).\n\nThe plaintiff's claim of 50,000 in damages is also exaggerated. My client is willing to compensate for the medical expenses, but the amount should be reasonable and based on actual costs incurred. I request the court to consider the defendant's financial capacity and the fact that she has already suffered significant emotional distress due to the accident.\n\nI also question the credibility of the plaintiff's testimony, as there is no conclusive evidence to prove that my client was texting at the exact moment of the accident. Furthermore, the plaintiff's own negligence in not taking evasive action to avoid the accident should be considered. I refer to the landmark case of Syed S. I. Ahmed vs. State of Tamil Nadu (1997), which states that the plaintiff's contributory negligence can reduce their entitlement to damages.\n\nIn light of these arguments, I urge the court to reconsider its decision and reduce the damages awarded to the plaintiff. My client is willing to settle the matter amicably, but we cannot accept the current verdict, which we believe is unfair and unjust."
+      },
+      {
+        "round": 2,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Your Honor, esteemed members of the court, today we gather to seek justice for my client, John Smith, who suffered a devastating injury due to the reckless actions of Defendant Jane Johnson. The facts of this case are unequivocal: Defendant was texting while driving, a blatant disregard for the safety of others on the road. This negligence led to a catastrophic collision, resulting in a broken leg and substantial medical expenses for my client.\n\nAs per Section 279 of the Indian Penal Code, rash driving is a punishable offense. Furthermore, the Motor Vehicles Act, 1988, emphasizes the importance of safe driving practices. In the landmark case of State of Karnataka vs. Krishnappa, the Supreme Court held that texting while driving constitutes rash and negligent driving.\n\nI will demonstrate that Defendant's actions were the proximate cause of the accident, and therefore, she is liable for the damages incurred by my client. The defendant's claim of sudden brake failure is an attempt to deflect responsibility, but the evidence will show that her negligence was the primary cause of the accident. I will present expert testimony and witnesses to corroborate this fact.\n\nI urge the court to consider the severity of my client's injuries and the significant financial burden imposed upon him. A award of 50,000 in damages is a reasonable compensation for the harm suffered. I am confident that the evidence will establish the defendant's liability, and I look forward to presenting my case to the court. Thank you, Your Honor."
+      },
+      {
+        "round": 2,
+        "speaker": "Defendant Lawyer",
+        "argument": "Your Honor, while my client, Jane Johnson, acknowledges texting while driving, we strongly contest the notion that her actions were the sole cause of the accident. The sudden brake failure, as attested by my client, was an unforeseen circumstance that contributed to the collision. We cite the Indian Motor Vehicles Act, 1988, Section 134, which emphasizes the importance of considering all factors leading to an accident.\n\nThe plaintiff's claim of 50,000 in medical expenses is also disputed. We argue that the plaintiff's injuries may have been exacerbated by his own failure to wear a seatbelt, as mandated by the Central Motor Vehicles Rules, 1989. This lack of precaution may have contributed to the severity of his injuries, thereby reducing my client's liability.\n\nFurthermore, we question the credibility of the plaintiff's testimony, as he has not provided any corroborating evidence to support his claims. The onus of proof lies with the plaintiff, and we believe he has failed to establish a direct causal link between my client's texting and the accident.\n\nIn light of these arguments, we request the court to reconsider the damages awarded and take into account the mitigating circumstances. We also draw the court's attention to the judgment in the case of Balram Prasad v. Kunal Kumari, which highlights the importance of considering contributory negligence in such cases. We urge the court to apply this principle and reduce the damages accordingly."
+      }
+    ],
+    "verdict": {
+      "verdict": "FAVOR_PLAINTIFF",
+      "confidence": 90,
+      "reasoning": [
+        "The Defendant's admission to texting while driving, a clear violation of safe driving practices, establishes a prima facie case of negligence.",
+        "The Indian Motor Vehicles Act, 1988, and the Indian Penal Code, 1860, impose a duty of care on drivers to exercise caution while operating a vehicle, which the Defendant failed to do.",
+        "The Supreme Court's precedent in Balram Prasad v. Kunal Kumar (2015) establishes that texting while driving constitutes gross negligence, which is the proximate cause of the accident in this case."
+      ],
+      "supporting_evidence": [
+        "The Defendant's admission to texting while driving",
+        "The Indian Motor Vehicles Act, 1988, and the Indian Penal Code, 1860, which impose a duty of care on drivers",
+        "The Supreme Court's judgment in Balram Prasad v. Kunal Kumar (2015), which establishes that texting while driving constitutes gross negligence"
+      ]
+    },
+    "rounds_completed": 2
+  }
+}

@@ -16,6 +16,8 @@ function App() {
   const [prediction, setPrediction] = useState(null);
   const [simulation, setSimulation] = useState(null);
   const [audit, setAudit] = useState(null);
+  const [jurisdiction, setJurisdiction] = useState('India');
+  const [relatedLaws, setRelatedLaws] = useState(null);
   const [loading, setLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState('upload');
   const [dragging, setDragging] = useState(false);
@@ -57,11 +59,12 @@ function App() {
     setLoading(true);
     const formData = new FormData();
     formData.append('file', file);
+  // Include selected jurisdiction with upload so it persists with the case
+  if (jurisdiction) formData.append('jurisdiction', jurisdiction);
 
     try {
-      const response = await axios.post(`${API}/upload`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      });
+      // Let axios set the multipart Content-Type (including boundary)
+      const response = await axios.post(`${API}/upload`, formData);
       setCaseId(response.data.case_id);
       setRawText(response.data.raw_text);
       setCurrentStep('process');
@@ -117,6 +120,25 @@ function App() {
     }
   };
 
+  // Find related laws for selected jurisdiction
+  const handleFindLaws = async () => {
+    if (!caseId) {
+      toast.error('No case available');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await axios.get(`${API}/related-laws/${caseId}`, { params: { jurisdiction } });
+      setRelatedLaws(response.data.laws || []);
+      toast.success('Related laws fetched');
+    } catch (error) {
+      toast.error('Error fetching related laws: ' + (error.response?.data?.detail || error.message));
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Run audit
   const handleAudit = async () => {
     setLoading(true);
@@ -127,6 +149,55 @@ function App() {
       toast.success('Bias audit completed!');
     } catch (error) {
       toast.error('Error auditing: ' + (error.response?.data?.detail || error.message));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Generate PDF report for the case
+  const handleGeneratePDF = async () => {
+    if (!caseId) {
+      toast.error('No case available');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await axios.get(`${API}/case-pdf/${caseId}`, {
+        responseType: 'blob'
+      });
+
+      // response.data is a Blob (PDF). Use the response content-type if present.
+      const contentType = response.headers['content-type'] || 'application/pdf';
+      const blob = response.data instanceof Blob ? response.data : new Blob([response.data], { type: contentType });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `case_${caseId}.pdf`);
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      toast.success('PDF downloaded');
+    } catch (error) {
+      // When server returns an error JSON but responseType='blob', axios exposes a Blob
+      // in error.response.data. Try to decode it to show the server message.
+      try {
+        if (error?.response?.data && error.response.data instanceof Blob) {
+          const errText = await error.response.data.text();
+          try {
+            const errJson = JSON.parse(errText);
+            toast.error('Error generating PDF: ' + (errJson.detail || errJson.message || JSON.stringify(errJson)));
+          } catch (e) {
+            toast.error('Error generating PDF: ' + errText);
+          }
+        } else {
+          toast.error('Error generating PDF: ' + (error.response?.data?.detail || error.message));
+        }
+      } catch (inner) {
+        console.error('Error handling PDF generation error:', inner, error);
+        toast.error('Error generating PDF: ' + (error.message || 'Unknown error'));
+      }
     } finally {
       setLoading(false);
     }
@@ -190,6 +261,17 @@ function App() {
                 style={{ display: 'none' }}
                 data-testid="file-input"
               />
+            </div>
+
+            <div style={{ marginTop: '1rem', display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+              <label style={{ fontWeight: 600 }}>Jurisdiction:</label>
+              <select value={jurisdiction} onChange={(e) => setJurisdiction(e.target.value)} className="select-jurisdiction">
+                <option>India</option>
+                <option>US</option>
+                <option>Paris</option>
+                <option>England</option>
+                <option>Australia</option>
+              </select>
             </div>
 
             {file && (
@@ -313,18 +395,56 @@ function App() {
                   Get Baseline Prediction
                 </button>
               )}
-              <button
-                className="btn-primary"
-                onClick={handleSimulate}
-                disabled={loading}
-                data-testid="simulate-btn"
-              >
-                {loading ? <span className="loading-spinner"></span> : <Users size={20} />}
-                Run Multi-Agent Simulation
-              </button>
+              <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+                <select value={jurisdiction} onChange={(e) => setJurisdiction(e.target.value)} className="select-jurisdiction">
+                  <option>India</option>
+                  <option>US</option>
+                  <option>Paris</option>
+                  <option>England</option>
+                  <option>Australia</option>
+                </select>
+
+                <button
+                  className="btn-secondary"
+                  onClick={handleFindLaws}
+                  disabled={loading || !caseId}
+                  data-testid="find-laws-btn"
+                >
+                  {loading ? <span className="loading-spinner"></span> : null}
+                  Find Relevant Laws
+                </button>
+
+                <button
+                  className="btn-primary"
+                  onClick={handleSimulate}
+                  disabled={loading || !(relatedLaws && relatedLaws.length > 0)}
+                  data-testid="simulate-btn"
+                >
+                  {loading ? <span className="loading-spinner"></span> : <Users size={20} />}
+                  Run Multi-Agent Simulation
+                </button>
+              </div>
               <button className="btn-secondary" onClick={handleReset} data-testid="reset-btn-2">
                 Start Over
               </button>
+            </div>
+          </div>
+        )}
+
+        {/* Related Laws preview (shown after fetching) */}
+        {relatedLaws && relatedLaws.length > 0 && (
+          <div className="section-card" data-testid="related-laws-section">
+            <h2 className="section-title">
+              <Scale size={32} />
+              Relevant Laws & Citations
+            </h2>
+            <div className="case-preview">
+              {relatedLaws.map((item, idx) => (
+                <div key={idx} style={{ marginBottom: '0.75rem' }}>
+                  <p style={{ fontWeight: 700 }}>{item.citation || `Law ${idx + 1}`}</p>
+                  <p style={{ color: '#374151' }}>{item.summary}</p>
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -396,9 +516,9 @@ function App() {
               {simulation.verdict.supporting_evidence && (
                 <div>
                   <h3 style={{ marginTop: '1.5rem', marginBottom: '1rem', fontSize: '1.3rem' }}>Supporting Evidence:</h3>
-                  <ul className="evidence-list">
+                  <ul className="reasoning-list">
                     {simulation.verdict.supporting_evidence.map((evidence, index) => (
-                      <li key={index} className="evidence-item" data-testid={`evidence-${index}`}>
+                      <li key={index} className="reasoning-item" data-testid={`evidence-${index}`}>
                         {evidence}
                       </li>
                     ))}
@@ -408,6 +528,16 @@ function App() {
             </div>
 
             <div className="action-buttons">
+              <button
+                className="btn-primary"
+                onClick={handleGeneratePDF}
+                disabled={loading}
+                data-testid="generate-pdf-btn"
+              >
+                {loading ? <span className="loading-spinner"></span> : <Scale size={20} />}
+                Generate PDF Report
+              </button>
+
               <button
                 className="btn-primary"
                 onClick={handleAudit}
@@ -483,6 +613,16 @@ function App() {
             <div className="action-buttons">
               <button className="btn-primary" onClick={handleReset} data-testid="new-case-btn">
                 Analyze New Case
+              </button>
+              <button
+                className="btn-primary"
+                onClick={handleGeneratePDF}
+                disabled={loading}
+                style={{ marginLeft: '0.75rem' }}
+                data-testid="generate-pdf-btn-2"
+              >
+                {loading ? <span className="loading-spinner"></span> : <Scale size={20} />}
+                Generate PDF Report
               </button>
             </div>
           </div>
