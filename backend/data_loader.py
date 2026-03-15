@@ -2,7 +2,7 @@ import pypdf
 import json
 import uuid
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any, List
 import re
 
 CASES_DIR = Path(__file__).parent / "cases"
@@ -11,13 +11,26 @@ CASES_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def extract_text_from_pdf(file_content: bytes) -> str:
-    """Extract text from PDF file bytes."""
+    """Extract text from PDF file bytes (with OCR fallback for scanned documents)."""
     try:
         from io import BytesIO
+        # First try standard PDF extraction
         pdf_reader = pypdf.PdfReader(BytesIO(file_content))
         text = ""
         for page in pdf_reader.pages:
-            text += page.extract_text() + "\n"
+            extracted = page.extract_text()
+            if extracted:
+                text += extracted + "\n"
+        
+        # If standard extraction fails or returns very little, try OCR
+        if not text or len(text.strip()) < 100:
+            try:
+                from .ocr_rag import extract_text_from_pdf_with_ocr
+                ocr_text = extract_text_from_pdf_with_ocr(file_content)
+                text = text + "\n[OCR Extracted Content]\n" + ocr_text if text else ocr_text
+            except Exception as ocr_error:
+                print(f"OCR not available or failed: {ocr_error}. Using standard extraction.")
+        
         return text.strip()
     except Exception as e:
         raise ValueError(f"Error extracting PDF text: {str(e)}")

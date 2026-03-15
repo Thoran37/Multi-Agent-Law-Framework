@@ -4,12 +4,14 @@ import axios from 'axios';
 import { FileText, Scale, Users, Shield, Upload, Play, CheckCircle, AlertCircle } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { toast } from 'sonner';
+import Auth from '@/components/Auth';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 function App() {
-  const [file, setFile] = useState(null);
+  const [user, setUser] = useState(null);
+  const [files, setFiles] = useState([]);
   const [caseId, setCaseId] = useState(null);
   const [rawText, setRawText] = useState('');
   const [caseDetails, setCaseDetails] = useState(null);
@@ -22,11 +24,28 @@ function App() {
   const [currentStep, setCurrentStep] = useState('upload');
   const [dragging, setDragging] = useState(false);
 
+  // Handle login success
+  const handleLoginSuccess = (userData) => {
+    setUser(userData);
+  };
+
+  // Handle logout
+  const handleLogout = () => {
+    setUser(null);
+    handleReset();
+    toast.success('Logged out successfully');
+  };
+
+  // If user not logged in, show auth page
+  if (!user) {
+    return <Auth onLoginSuccess={handleLoginSuccess} />;
+  }
+
   // File upload handlers
   const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    if (selectedFile) {
-      setFile(selectedFile);
+    const selectedFiles = Array.from(e.target.files || []);
+    if (selectedFiles.length > 0) {
+      setFiles(prev => [...prev, ...selectedFiles]);
     }
   };
 
@@ -43,34 +62,39 @@ function App() {
   const handleDrop = (e) => {
     e.preventDefault();
     setDragging(false);
-    const droppedFile = e.dataTransfer.files[0];
-    if (droppedFile) {
-      setFile(droppedFile);
+    const droppedFiles = Array.from(e.dataTransfer.files || []);
+    if (droppedFiles.length > 0) {
+      setFiles(prev => [...prev, ...droppedFiles]);
     }
   };
 
   // Upload document
   const handleUpload = async () => {
-    if (!file) {
-      toast.error('Please select a file first');
+    if (files.length === 0) {
+      toast.error('Please select at least one file');
       return;
     }
 
     setLoading(true);
     const formData = new FormData();
-    formData.append('file', file);
-  // Include selected jurisdiction with upload so it persists with the case
-  if (jurisdiction) formData.append('jurisdiction', jurisdiction);
+    
+    // Add all files to form data
+    files.forEach(file => {
+      formData.append('files', file);
+    });
+    
+    // Include selected jurisdiction with upload so it persists with the case
+    if (jurisdiction) formData.append('jurisdiction', jurisdiction);
 
     try {
-      // Let axios set the multipart Content-Type (including boundary)
       const response = await axios.post(`${API}/upload`, formData);
       setCaseId(response.data.case_id);
       setRawText(response.data.raw_text);
       setCurrentStep('process');
-      toast.success('Document uploaded successfully!');
+      toast.success(`${response.data.message}`);
     } catch (error) {
-      toast.error('Error uploading document: ' + (error.response?.data?.detail || error.message));
+      console.error('Upload error details:', error.response?.data || error.message);
+      toast.error('Error uploading documents: ' + (error.response?.data?.detail || error.message));
     } finally {
       setLoading(false);
     }
@@ -205,7 +229,7 @@ function App() {
 
   // Reset
   const handleReset = () => {
-    setFile(null);
+    setFiles([]);
     setCaseId(null);
     setRawText('');
     setCaseDetails(null);
@@ -220,12 +244,32 @@ function App() {
       {/* Header */}
       <header className="legal-header">
         <div className="header-content">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
             <Scale size={48} color="#c9a961" />
             <div>
               <h1 className="header-title" data-testid="app-title">Legal Multi-Agent Courtroom</h1>
               <p className="header-subtitle" data-testid="app-subtitle">AI-Powered Case Analysis & Simulation System</p>
             </div>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <span style={{ fontSize: '0.9rem', color: '#666' }}>
+              Welcome, <strong>{user.name}</strong> ({user.roll_number})
+            </span>
+            <button
+              onClick={handleLogout}
+              style={{
+                padding: '0.5rem 1rem',
+                backgroundColor: '#dc2626',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '0.9rem',
+                fontWeight: '600'
+              }}
+            >
+              Logout
+            </button>
           </div>
         </div>
       </header>
@@ -236,10 +280,10 @@ function App() {
           <div className="section-card" data-testid="upload-section">
             <h2 className="section-title">
               <FileText size={32} />
-              Upload Legal Document
+              Upload Legal Documents
             </h2>
             <p className="section-subtitle">
-              Upload an Indian legal case document in PDF or TXT format to begin the analysis.
+              Upload multiple Indian legal case documents (PDF or TXT) and evidence files to begin the analysis. OCR will be automatically applied to scanned documents.
             </p>
 
             <div
@@ -251,12 +295,14 @@ function App() {
               data-testid="upload-zone"
             >
               <Upload className="upload-icon" size={64} />
-              <p className="upload-text">Drag and drop your document here</p>
-              <p className="upload-hint">or click to browse (PDF or TXT files)</p>
+              <p className="upload-text">Drag and drop your documents here</p>
+              <p className="upload-hint">or click to browse (supports multiple files: PDF or TXT)</p>
+              <p style={{ fontSize: '0.85rem', color: '#999', marginTop: '0.5rem' }}>Scanned documents will be processed with OCR automatically</p>
               <input
                 id="file-input"
                 type="file"
                 accept=".pdf,.txt"
+                multiple
                 onChange={handleFileChange}
                 style={{ display: 'none' }}
                 data-testid="file-input"
@@ -274,15 +320,32 @@ function App() {
               </select>
             </div>
 
-            {file && (
-              <div className="file-info" data-testid="file-info">
-                <span className="file-name">
-                  <FileText size={20} style={{ display: 'inline', marginRight: '0.5rem' }} />
-                  {file.name}
-                </span>
-                <button className="btn-remove" onClick={() => setFile(null)} data-testid="remove-file-btn">
-                  Remove
-                </button>
+            {files && files.length > 0 && (
+              <div className="file-list" data-testid="file-list" style={{ marginTop: '1rem', borderTop: '1px solid #e0e7ff', paddingTop: '1rem' }}>
+                <p style={{ fontWeight: 600, marginBottom: '0.5rem' }}>Selected Files ({files.length}):</p>
+                <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
+                  {files.map((file, idx) => (
+                    <div 
+                      key={idx} 
+                      className="file-info" 
+                      data-testid={`file-info-${idx}`}
+                      style={{ marginBottom: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                    >
+                      <span className="file-name">
+                        <FileText size={18} style={{ display: 'inline', marginRight: '0.5rem' }} />
+                        {file.name} ({(file.size / 1024).toFixed(2)} KB)
+                      </span>
+                      <button 
+                        className="btn-remove" 
+                        onClick={() => setFiles(files.filter((_, i) => i !== idx))} 
+                        data-testid={`remove-file-btn-${idx}`}
+                        style={{ padding: '0.25rem 0.5rem', fontSize: '0.85rem' }}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
 
@@ -290,7 +353,7 @@ function App() {
               <button
                 className="btn-primary"
                 onClick={handleUpload}
-                disabled={!file || loading}
+                disabled={files.length === 0 || loading}
                 data-testid="upload-btn"
               >
                 {loading ? <span className="loading-spinner"></span> : <Upload size={20} />}
