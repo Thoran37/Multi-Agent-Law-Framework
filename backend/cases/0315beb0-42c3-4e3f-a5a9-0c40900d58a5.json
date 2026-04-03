@@ -1,0 +1,11 @@
+{
+  "filenames": [
+    "test_case.txt",
+    "test_case.txt"
+  ],
+  "raw_text": "This is a test case document with facts and issues. --- Document Separator --- This is a test case document with facts and issues.",
+  "upload_timestamp": "2026-03-15T16:05:09.673863+00:00",
+  "document_count": 2,
+  "jurisdiction": "India",
+  "case_id": "0315beb0-42c3-4e3f-a5a9-0c40900d58a5"
+}

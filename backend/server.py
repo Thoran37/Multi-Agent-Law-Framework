@@ -18,6 +18,7 @@ from .case_processor import CaseProcessor
 from .classifier import BaselineClassifier
 from .orchestrator import DebateOrchestrator
 from .auditor import BiasAuditor
+from .auth import auth_router
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -80,40 +81,86 @@ async def root():
 
 
 @api_router.post("/upload", response_model=CaseUploadResponse)
-async def upload_document(file: UploadFile = File(...), jurisdiction: Optional[str] = Form(None)):
-    """Upload PDF or text document and extract raw text."""
+async def upload_document(files: List[UploadFile] = File(...), jurisdiction: str = Form(default="India")):
+    """Upload multiple PDF or text documents and extract raw text with OCR support."""
     try:
-        content = await file.read()
+        if not files or len(files) == 0:
+            raise HTTPException(status_code=400, detail="At least one file must be provided")
         
-        # Extract text based on file type
-        if file.filename.endswith('.pdf'):
-            raw_text = extract_text_from_pdf(content)
-        elif file.filename.endswith('.txt'):
-            raw_text = content.decode('utf-8')
-        else:
-            raise HTTPException(status_code=400, detail="Only PDF and TXT files are supported")
+        all_text = []
+        filenames = []
         
-        # Clean text
-        cleaned_text = clean_text(raw_text)
+        for file in files:
+            if not file.filename:
+                continue
+                
+            content = await file.read()
+            
+            # Extract text based on file type
+            if file.filename.endswith('.pdf'):
+                raw_text = extract_text_from_pdf(content)
+            elif file.filename.endswith('.txt'):
+                raw_text = content.decode('utf-8')
+            else:
+                raise HTTPException(status_code=400, detail=f"Unsupported file type: {file.filename}. Only PDF and TXT files are supported")
+            
+            all_text.append(raw_text)
+            filenames.append(file.filename)
         
-        # Save case
+        # Combine all texts
+        combined_text = "\n\n--- Document Separator ---\n\n".join(all_text)
+        combined_text = clean_text(combined_text)
+        
+        # Save case with all documents
         case_data = {
-            'filename': file.filename,
-            'raw_text': cleaned_text,
-            'upload_timestamp': datetime.now(timezone.utc).isoformat()
+            'filenames': filenames,
+            'raw_text': combined_text,
+            'upload_timestamp': datetime.now(timezone.utc).isoformat(),
+            'document_count': len(filenames)
         }
         if jurisdiction:
             case_data['jurisdiction'] = jurisdiction
+        
         case_id = save_case(case_data)
+        
+        # Build RAG index for this case
+        try:
+            from .ocr_rag import build_rag_index
+            from langchain_groq import ChatGroq
+            
+            vectorstore, embedder, retriever = build_rag_index(all_text)
+            
+            # Store retriever in case data for later use
+            update_case(case_id, {
+                'rag_index_available': True,
+                'document_sources': filenames
+            })
+            
+            # Set RAG for case processor
+            llm = ChatGroq(model="llama-3.3-70b-versatile", groq_api_key=os.environ.get("GROQ_API_KEY"))
+            case_processor.set_rag_chain(retriever, llm)
+            
+            # Store retriever in a simple in-memory cache (for this session)
+            # In production, you'd persist this differently
+            if not hasattr(app, 'case_rag_cache'):
+                app.case_rag_cache = {}
+            app.case_rag_cache[case_id] = retriever
+            
+            logger.info(f"RAG index built for case {case_id} with {len(all_text)} documents")
+        except Exception as e:
+            logger.warning(f"RAG indexing failed for case {case_id}: {e}. Will use Groq only.")
+        
+        preview_text = combined_text[:1000] + "..." if len(combined_text) > 1000 else combined_text
         
         return CaseUploadResponse(
             case_id=case_id,
-            raw_text=cleaned_text[:1000] + "..." if len(cleaned_text) > 1000 else cleaned_text,
-            message="Document uploaded successfully"
+            raw_text=preview_text,
+            message=f"Successfully uploaded {len(filenames)} document(s)"
         )
     
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error processing file: {str(e)}")
+        logger.exception(f"Error in multi-file upload: {e}")
+        raise HTTPException(status_code=500, detail=f"Error processing files: {str(e)}")
 
 
 @api_router.post("/process-case/{case_id}", response_model=CaseProcessResponse)
@@ -366,8 +413,22 @@ async def reportlab_check():
         return JSONResponse(content={"installed": False, "error": str(e)})
 
 
+@api_router.get("/local-model-check")
+async def local_model_check():
+    """Diagnostic endpoint: reports whether the local model (qwenn_model) was successfully loaded by agents."""
+    try:
+        # Import agents module and inspect loader variables
+        from . import agents as agents_module
+
+        loaded = getattr(agents_module, '_local_model', None) is not None and getattr(agents_module, '_local_tokenizer', None) is not None
+        return JSONResponse(content={"local_model_loaded": bool(loaded)})
+    except Exception as e:
+        return JSONResponse(content={"local_model_loaded": False, "error": str(e)})
+
+
 # Include the router in the main app
 app.include_router(api_router)
+app.include_router(auth_router)
 
 app.add_middleware(
     CORSMiddleware,

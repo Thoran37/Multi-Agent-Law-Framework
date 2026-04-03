@@ -2,16 +2,96 @@ from groq import AsyncGroq
 import os
 import json
 import re
-from typing import Dict, Any
+import logging
+from typing import Dict, Any, List, Optional
+import asyncio
+
+logger = logging.getLogger(__name__)
 
 
 class CaseProcessor:
     def __init__(self):
         self.client = AsyncGroq(api_key=os.environ.get("GROQ_API_KEY"))
         self.model = "llama-3.3-70b-versatile"
+        self.retriever = None
+        self.llm = None
+    
+    def set_rag_chain(self, retriever, llm):
+        """Set RAG retriever and LLM for case analysis."""
+        self.retriever = retriever
+        self.llm = llm
     
     async def extract_case_details(self, case_text: str) -> Dict[str, Any]:
-        """Extract facts, issues, and holding from case text using LLM."""
+        """Extract facts, issues, and holding from case text using RAG + LLM."""
+        
+        # If RAG is available, use it to enhance context
+        if self.retriever and self.llm:
+            return await self._extract_with_rag(case_text)
+        else:
+            return await self._extract_with_groq(case_text)
+    
+    async def _extract_with_rag(self, case_text: str) -> Dict[str, Any]:
+        """Extract details using RAG for better context understanding."""
+        try:
+            loop = asyncio.get_running_loop()
+            
+            # Query RAG for facts, issues, and holdings
+            queries = [
+                "What are the key facts and background of this case?",
+                "What are the main legal issues in this case?",
+                "What is the court's decision or holding?"
+            ]
+            
+            results = await asyncio.gather(*[
+                loop.run_in_executor(None, self._query_rag_sync, query)
+                for query in queries
+            ])
+            
+            facts, issues, holding = results
+            
+            logger.info("Case details extracted using RAG")
+            return {
+                "facts": facts,
+                "issues": issues,
+                "holding": holding
+            }
+        except Exception as e:
+            logger.warning(f"RAG extraction failed, falling back to Groq: {e}")
+            return await self._extract_with_groq(case_text)
+    
+    def _query_rag_sync(self, query: str) -> str:
+        """Synchronous wrapper for RAG query."""
+        try:
+            from langchain.chains import RetrievalQA
+            from langchain.prompts import PromptTemplate
+            
+            prompt_template = """You are a legal expert. Answer the question using the provided legal documents.
+If information is not found, provide a brief general answer.
+
+Question: {question}
+
+Answer:"""
+            
+            PROMPT = PromptTemplate(
+                template=prompt_template,
+                input_variables=["question"]
+            )
+            
+            rag_chain = RetrievalQA.from_chain_type(
+                llm=self.llm,
+                chain_type="stuff",
+                retriever=self.retriever,
+                chain_type_kwargs={"prompt": PROMPT}
+            )
+            
+            result = rag_chain.invoke({"query": query})
+            return result.get("result", "")
+        except Exception as e:
+            logger.exception(f"RAG query failed: {e}")
+            return ""
+    
+    async def _extract_with_groq(self, case_text: str) -> Dict[str, Any]:
+        """Extract details using Groq LLM (fallback)."""
         
         prompt = f"""You are a legal AI assistant analyzing an Indian legal case document.
 
@@ -83,6 +163,7 @@ Only return valid JSON, no additional text."""
             if match:
                 issues = match.group(1).strip()[:400]
                 break
+        # render_page_image()
         
         # Try to find holding/judgment
         holding = "Holding/judgment not clearly specified."
