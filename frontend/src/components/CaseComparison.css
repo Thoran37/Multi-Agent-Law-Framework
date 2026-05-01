@@ -1,0 +1,641 @@
+.case-comparison {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.comparison-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 16px;
+}
+
+.comparison-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.close-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background: #f1f5f9;
+  color: #475569;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 48px 20px;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+/* Comparison Grid */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.comparison-case {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.comparison-case .case-header {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: white;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.comparison-case .case-header h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.jurisdiction-badge {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.case-sections {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 12px;
+}
+
+.section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.section h5 {
+  margin: 0 0 8px 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+
+.section-content {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.prediction-text {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  color: #0c4a6e;
+}
+
+.confidence-bar {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6 0%, #10b981 100%);
+}
+
+.confidence-label {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #0369a1;
+  font-weight: 600;
+}
+
+/* Analysis Sections */
+.analysis-section {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.analysis-section h4 {
+  margin: 0 0 16px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.analysis-section.similarities {
+  border-left: 4px solid #10b981;
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.analysis-section.differences {
+  border-left: 4px solid #f59e0b;
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.analysis-section.precedent {
+  border-left: 4px solid #8b5cf6;
+  background: rgba(139, 92, 246, 0.05);
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.similarity-tag {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.difference-tag {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.difference-item {
+  margin-bottom: 12px;
+}
+
+.diff-case {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.precedent-info {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 3px solid #8b5cf6;
+}
+
+.precedent-info p {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.precedent-info p:last-child {
+  margin-bottom: 0;
+}
+
+.highlight-text {
+  background: #fef3c7;
+  color: #92400e;
+  font-weight: 600;
+}
+
+.close-btn:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Comparison Controls */
+.comparison-controls {
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sort-select {
+  padding: 8px 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+  color: #1e293b;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sort-select:hover {
+  border-color: #3b82f6;
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Similarity Badge */
+.similarity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fef3c7;
+  border: 2px solid #f59e0b;
+  border-radius: 8px;
+  padding: 10px 16px;
+  color: #92400e;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* Comparison Grid */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.case-column {
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+}
+
+.case-column:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.case-header {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.case-header.primary {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border-bottom-color: #3b82f6;
+}
+
+.case-rank {
+  font-size: 1.5rem;
+}
+
+.case-title {
+  flex: 1;
+}
+
+.case-id {
+  margin: 0;
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 0.95rem;
+  word-break: break-all;
+}
+
+.case-date {
+  margin: 4px 0 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* Case Details */
+.case-details {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-row.full-width {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  min-width: 100px;
+}
+
+.detail-row.full-width .detail-label {
+  min-width: auto;
+}
+
+.detail-value {
+  color: #1e293b;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.detail-row.full-width .detail-value {
+  width: 100%;
+}
+
+.jurisdiction-badge {
+  background: #dbeafe;
+  color: #0c4a6e;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.verdict-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+}
+
+.verdict-badge.granted,
+.verdict-badge.plaintiff {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.verdict-badge.denied,
+.verdict-badge.defendant {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.verdict-badge.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* Confidence Details */
+.confidence-score {
+  display: inline-block;
+  font-weight: 700;
+  color: #3b82f6;
+  font-size: 1.1rem;
+  margin-right: 8px;
+}
+
+.confidence-bar {
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.confidence-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6 0%, #10b981 100%);
+  transition: width 0.3s ease;
+}
+
+/* Text Boxes */
+.issues-box,
+.facts-box,
+.holding-box {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px;
+  width: 100%;
+}
+
+.issue-text,
+.fact-text,
+.holding-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.no-data {
+  margin: 0;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* Comparison Analysis */
+.comparison-analysis {
+  border-top: 2px solid #e2e8f0;
+  padding-top: 24px;
+}
+
+.comparison-analysis h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.analysis-card {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+.analysis-card:hover {
+  border-color: #3b82f6;
+  background: #f1f5f9;
+}
+
+.analysis-card h4 {
+  margin: 0 0 12px 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.analysis-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.match {
+  color: #166534;
+  font-weight: 600;
+}
+
+.mismatch {
+  color: #991b1b;
+  font-weight: 600;
+}
+
+/* Confidence Comparison */
+.confidence-comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.conf-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.conf-high {
+  color: #10b981;
+  font-weight: 700;
+}
+
+.conf-low {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.conf-diff {
+  font-weight: 600;
+  color: #3b82f6;
+  padding-top: 8px;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Precedent Section */
+.precedent-section {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 2px solid #86efac;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.precedent-section h4 {
+  margin: 0 0 12px 0;
+  font-weight: 700;
+  color: #166534;
+}
+
+.precedent-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.precedent-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #166534;
+}
+
+.precedent-found {
+  font-weight: 600;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 6px;
+  border-left: 3px solid #10b981;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .comparison-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .case-comparison {
+    padding: 16px;
+  }
+
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .detail-label {
+    min-width: auto;
+  }
+}

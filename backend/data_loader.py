@@ -36,6 +36,50 @@ def extract_text_from_pdf(file_content: bytes) -> str:
         raise ValueError(f"Error extracting PDF text: {str(e)}")
 
 
+def extract_text_from_docx(file_content: bytes) -> str:
+    """Extract text from Word document (.docx) file bytes."""
+    try:
+        from docx import Document
+        from io import BytesIO
+        
+        doc = Document(BytesIO(file_content))
+        text = ""
+        
+        for para in doc.paragraphs:
+            if para.text.strip():
+                text += para.text + "\n"
+        
+        # Also extract from tables
+        for table in doc.tables:
+            for row in table.rows:
+                for cell in row.cells:
+                    if cell.text.strip():
+                        text += cell.text + "\n"
+        
+        return text.strip() if text.strip() else ""
+    except Exception as e:
+        raise ValueError(f"Error extracting Word document text: {str(e)}")
+
+
+def extract_text_from_image(file_content: bytes) -> str:
+    """Extract text from image file using OCR (PIL + Tesseract)."""
+    try:
+        from PIL import Image
+        import pytesseract
+        from io import BytesIO
+        
+        img = Image.open(BytesIO(file_content))
+        # Convert to RGB if necessary (for PNG with transparency, grayscale, etc.)
+        if img.mode != 'RGB':
+            img = img.convert('RGB')
+        
+        # Extract text using Tesseract OCR
+        text = pytesseract.image_to_string(img)
+        return text.strip() if text.strip() else ""
+    except Exception as e:
+        raise ValueError(f"Error extracting text from image using OCR: {str(e)}")
+
+
 def clean_text(text: str) -> str:
     """Clean and normalize text."""
     # Remove extra whitespace

@@ -23,7 +23,6 @@ idna==3.11
 iniconfig==2.3.0
 isort==7.0.0
 jmespath==1.0.1
-jq==1.10.0
 markdown-it-py==4.0.0
 mccabe==0.7.0
 mdurl==0.1.2
@@ -77,9 +76,10 @@ reportlab==4.4.10
 transformers>=4.30.0
 torch>=2.0.0
 pytesseract==0.3.10
-python-multipart==0.0.20
 langchain>=0.1.0
 langchain-community>=0.0.1
+python-docx==0.8.11
+Pillow==10.1.0
 langchain-groq>=0.0.1
 faiss-cpu>=1.7.4
 sentence-transformers>=2.2.0
