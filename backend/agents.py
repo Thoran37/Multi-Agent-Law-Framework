@@ -55,11 +55,34 @@ class LegalAgent:
         self.prompt_template = _load_prompt_file(agent_type)
 
     async def generate_response(self, context: Dict[str, Any]) -> str:
-        prompt = self.prompt_template.format(**context)
+        # Build enriched context with debate history for proper formatting
+        enriched_context = {
+            'facts': context.get('facts', ''),
+            'issues': context.get('issues', ''),
+            'holding': context.get('holding', ''),
+            'previous_debate': context.get('previous_debate', ''),
+            'opponent_arguments': context.get('opponent_arguments', ''),
+            'round_number': context.get('round_number', 1),
+        }
+        
+        # Handle template formatting - use safe format to avoid KeyError
+        try:
+            prompt = self.prompt_template.format(**enriched_context)
+        except KeyError:
+            # Fallback: just use the template with basic context
+            prompt = f"""Facts: {enriched_context['facts']}
+Issues: {enriched_context['issues']}
+Holding: {enriched_context['holding']}
+
+{enriched_context['previous_debate']}
+{enriched_context['opponent_arguments']}
+
+Provide your legal argument for round {enriched_context['round_number']}."""
+        
         try:
             response = await self.client.chat.completions.create(
                 messages=[
-                    {"role": "system", "content": f"You are a {self.agent_type.replace('_', ' ')} in an Indian courtroom."},
+                    {"role": "system", "content": f"You are a {self.agent_type.replace('_', ' ')} in an Indian courtroom. Respond directly to the opposing counsel's arguments and build your case based on the case facts and legal issues presented."},
                     {"role": "user", "content": prompt}
                 ],
                 model=self.model,
@@ -79,7 +102,29 @@ class LocalLegalAgent(LegalAgent):
         super().__init__(agent_type)
 
     async def generate_response(self, context: Dict[str, Any]) -> str:
-        prompt = self.prompt_template.format(**context)
+        # Build enriched context with debate history for proper formatting
+        enriched_context = {
+            'facts': context.get('facts', ''),
+            'issues': context.get('issues', ''),
+            'holding': context.get('holding', ''),
+            'previous_debate': context.get('previous_debate', ''),
+            'opponent_arguments': context.get('opponent_arguments', ''),
+            'round_number': context.get('round_number', 1),
+        }
+        
+        # Handle template formatting - use safe format to avoid KeyError
+        try:
+            prompt = self.prompt_template.format(**enriched_context)
+        except KeyError:
+            # Fallback: just use the template with basic context
+            prompt = f"""Facts: {enriched_context['facts']}
+Issues: {enriched_context['issues']}
+Holding: {enriched_context['holding']}
+
+{enriched_context['previous_debate']}
+{enriched_context['opponent_arguments']}
+
+Provide your legal argument for round {enriched_context['round_number']}."""
 
         # If local model not available, fallback to Groq
         if _local_model is None or _local_tokenizer is None:
@@ -118,28 +163,155 @@ class Judge(LegalAgent):
         super().__init__("judge")
 
     async def render_verdict(self, context: Dict[str, Any]) -> Dict[str, Any]:
-        """Generate structured verdict using Groq (Judge remains Groq-driven)."""
+        """Generate structured, decisive verdict with clear winner and penalty/remedy."""
         response_text = await self.generate_response(context)
-
+        
+        # Try to parse structured JSON response from judge
         try:
             json_match = re.search(r'\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}', response_text, re.DOTALL)
             if json_match:
                 verdict = json.loads(json_match.group())
+                if 'verdict' in verdict and 'reasoning' in verdict:
+                    return self._normalize_verdict(verdict)
             else:
                 verdict = json.loads(response_text)
-
-            if 'verdict' in verdict and 'confidence' in verdict:
-                return verdict
+                if 'verdict' in verdict:
+                    return self._normalize_verdict(verdict)
         except Exception:
             pass
 
-        verdict_type = "FAVOR_PLAINTIFF" if "plaintiff" in response_text.lower() else "FAVOR_DEFENDANT"
+        # Parse response to determine winner and details
+        return self._parse_judge_response(response_text, context)
+
+    def _parse_judge_response(self, response_text: str, context: Dict[str, Any]) -> Dict[str, Any]:
+        """Parse judge's natural language response into structured verdict."""
+        text_lower = response_text.lower()
+        
+        # Determine verdict winner
+        plaintiff_indicators = ['plaintiff prevails', 'plaintiff wins', 'favor plaintiff', 'favor the plaintiff', 'judgment for plaintiff']
+        defendant_indicators = ['defendant prevails', 'defendant wins', 'favor defendant', 'favor the defendant', 'judgment for defendant']
+        
+        verdict_type = "PENDING"
+        for indicator in plaintiff_indicators:
+            if indicator in text_lower:
+                verdict_type = "FAVOR_PLAINTIFF"
+                break
+        
+        if verdict_type == "PENDING":
+            for indicator in defendant_indicators:
+                if indicator in text_lower:
+                    verdict_type = "FAVOR_DEFENDANT"
+                    break
+        
+        # If still pending, analyze debate arguments
+        if verdict_type == "PENDING":
+            plaintiff_args = context.get('plaintiff_arguments', '').lower()
+            defendant_args = context.get('defendant_arguments', '').lower()
+            
+            # Simple heuristic: count positive indicators
+            plaintiff_score = sum(1 for word in ['proved', 'evidence', 'liable', 'guilty', 'violation'] if word in plaintiff_args)
+            defendant_score = sum(1 for word in ['proved', 'evidence', 'liable', 'guilty', 'violation'] if word in defendant_args)
+            
+            verdict_type = "FAVOR_PLAINTIFF" if plaintiff_score >= defendant_score else "FAVOR_DEFENDANT"
+        
+        # Extract penalty/damages from response
+        penalty_info = self._extract_penalty_info(response_text, verdict_type)
+        
+        # Create concise 2-line summary
+        summary_lines = self._create_verdict_summary(verdict_type, penalty_info, response_text)
+        
+        confidence = 85 if verdict_type != "PENDING" else 50
+        
         return {
             "verdict": verdict_type,
-            "confidence": 75,
-            "reasoning": [response_text[:200]],
-            "supporting_evidence": ["Evidence from case facts"]
+            "confidence": confidence,
+            "ruling": summary_lines[0],
+            "remedy": summary_lines[1],
+            "penalty_info": penalty_info,
+            "reasoning": [response_text[:500]],
+            "supporting_evidence": ["Analyzed debate arguments and case facts"],
+            "full_reasoning": response_text
         }
+
+    def _extract_penalty_info(self, text: str, verdict_type: str) -> Dict[str, Any]:
+        """Extract penalty, damages, or jail time information from judge response."""
+        import re
+        
+        penalty_info = {
+            "type": "pending",
+            "amount": None,
+            "duration": None,
+            "description": ""
+        }
+        
+        # Look for monetary amounts
+        money_pattern = r'(?:damages?|compensation|award|payment)\s*(?:of)?\s*(?:Rs\.?|₹)?\s*([\d,]+(?:\.\d{2})?)'
+        money_match = re.search(money_pattern, text, re.IGNORECASE)
+        if money_match:
+            amount = money_match.group(1).replace(',', '')
+            penalty_info["type"] = "monetary"
+            penalty_info["amount"] = amount
+            penalty_info["description"] = f"Pay ₹{amount} in damages"
+        
+        # Look for jail time
+        jail_pattern = r'(?:imprisonment|jail|prison)\s+(?:of|for)?\s*(\d+)\s*(?:years?|months?|days?)'
+        jail_match = re.search(jail_pattern, text, re.IGNORECASE)
+        if jail_match:
+            duration = jail_match.group(1)
+            unit = re.search(r'(years?|months?|days?)', text, re.IGNORECASE)
+            unit_str = unit.group(1) if unit else "months"
+            penalty_info["type"] = "jail"
+            penalty_info["duration"] = f"{duration} {unit_str}"
+            penalty_info["description"] = f"Imprisonment for {duration} {unit_str}"
+        
+        # Look for other remedies
+        if "compensate" in text.lower():
+            penalty_info["description"] = penalty_info["description"] or "Provide compensation to plaintiff"
+        if "specific performance" in text.lower():
+            penalty_info["description"] = penalty_info["description"] or "Specific performance ordered"
+        if "injunction" in text.lower():
+            penalty_info["description"] = penalty_info["description"] or "Injunction issued"
+        
+        return penalty_info
+
+    def _create_verdict_summary(self, verdict_type: str, penalty_info: Dict[str, Any], full_text: str) -> List[str]:
+        """Create concise 2-line verdict summary."""
+        
+        # Line 1: Who won and why
+        if verdict_type == "FAVOR_PLAINTIFF":
+            line1 = "✓ VERDICT: Plaintiff prevails. Court finds the plaintiff's arguments supported by law and facts."
+        elif verdict_type == "FAVOR_DEFENDANT":
+            line1 = "✓ VERDICT: Defendant prevails. Court finds insufficient evidence supporting plaintiff's claims."
+        else:
+            line1 = "⚖ VERDICT: Case dismissed or inconclusive. Further evidence required."
+        
+        # Line 2: Remedy/Penalty
+        if penalty_info.get("description"):
+            line2 = f"REMEDY: {penalty_info['description']}"
+        elif verdict_type == "FAVOR_PLAINTIFF":
+            line2 = "REMEDY: Defendant ordered to cease violation and compensate plaintiff for damages."
+        else:
+            line2 = "REMEDY: Plaintiff's claims dismissed. No damages awarded."
+        
+        return [line1, line2]
+
+    def _normalize_verdict(self, verdict: Dict[str, Any]) -> Dict[str, Any]:
+        """Normalize verdict structure from JSON response."""
+        if "penalty_info" not in verdict:
+            verdict["penalty_info"] = {
+                "type": "pending",
+                "amount": None,
+                "duration": None,
+                "description": verdict.get("remedy", "")
+            }
+        
+        if "remedy" not in verdict:
+            verdict["remedy"] = verdict.get("reasoning", [""])[0] if isinstance(verdict.get("reasoning"), list) else ""
+        
+        if "ruling" not in verdict:
+            verdict["ruling"] = f"Court Rules: {verdict.get('verdict', 'PENDING')}"
+        
+        return verdict
 
 
 class Auditor(LegalAgent):

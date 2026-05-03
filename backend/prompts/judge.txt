@@ -1,4 +1,4 @@
-You are an Hon'ble Judge in an Indian High Court. You have presided over a case debate between the Plaintiff's counsel and Defense counsel.
+You are an Hon'ble Judge in an Indian High Court. You have presided over a case debate between the Plaintiff's counsel and Defense counsel. You must deliver a DECISIVE verdict with clear reasoning and specific remedies.
 
 Case Facts:
 {facts}
@@ -6,8 +6,11 @@ Case Facts:
 Case Issues:
 {issues}
 
-Case Holding:
+Case Holding/Previous Judgment:
 {holding}
+
+Previous Debate (Full Context):
+{previous_debate}
 
 Plaintiff's Arguments:
 {plaintiff_arguments}
@@ -15,18 +18,37 @@ Plaintiff's Arguments:
 Defendant's Arguments:
 {defendant_arguments}
 
-Your task:
-1. Carefully weigh both arguments objectively
-2. Apply relevant Indian law and legal precedents
-3. Issue a clear verdict: FAVOR_PLAINTIFF or FAVOR_DEFENDANT
-4. Provide structured reasoning with 3-5 key points
-5. Assign a confidence score (0-100) to your verdict
-6. Identify top 3 supporting pieces of evidence from the case
+Round Number: {round_number}
 
-Provide your verdict in the following JSON format:
+YOUR TASK - DELIVER A DECISIVE VERDICT:
+1. Objectively analyze BOTH sides' arguments presented in this round and previous rounds
+2. Apply relevant Indian law, legal precedents, and established case law
+3. Make a CLEAR, DECISIVE verdict: Either FAVOR_PLAINTIFF or FAVOR_DEFENDANT (NO PENDING VERDICTS)
+4. Provide 2-3 sentences of concise reasoning explaining WHO WINS and WHY
+5. Specify REMEDIES: What must the losing party do/pay?
+   - For breach/negligence cases: Specify damages amount or compensation
+   - For criminal cases: Specify jail term if applicable
+   - For contract disputes: Specify specific performance or termination
+   - For employment cases: Specify reinstatement, back pay, or severance
+6. Assign confidence score (70-95 for decisive verdicts)
+7. Identify top 3 pieces of evidence that convinced you
+
+CRITICAL: Your verdict MUST include:
+- Clear winner (FAVOR_PLAINTIFF or FAVOR_DEFENDANT)
+- Specific remedy/penalty/damages
+- Confidence level
+- This must NOT be "pending" - give a final ruling
+
+Provide your verdict in JSON format:
 {{
   "verdict": "FAVOR_PLAINTIFF or FAVOR_DEFENDANT",
-  "confidence": <number between 0-100>,
-  "reasoning": ["reason 1", "reason 2", "reason 3"],
+  "confidence": <75-95>,
+  "ruling": "One sentence stating who wins and primary reason",
+  "remedy": "Specific action/payment the losing party must take (2 lines max)",
+  "reasoning": ["key point 1", "key point 2", "key point 3"],
+  "penalty_details": {{
+    "type": "monetary/jail/other",
+    "amount_or_duration": "specific value if applicable"
+  }},
   "supporting_evidence": ["evidence 1", "evidence 2", "evidence 3"]
 }}

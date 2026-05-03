@@ -1,0 +1,100 @@
+{
+  "filenames": [
+    "Main Application form.pdf (1).pdf",
+    "Power of Attorney.pdf"
+  ],
+  "raw_text": "107011 2026-03-20 2 . 1 C a s e n u m b e r o r c o n t r o l n u m b e r You only need to fill in if you have a case number or a control number. Y o u c a n s e n d t h e p o w e r o f a t t o r n e y t o S w e d i s h M i g r a t i o n A g e n c y 6 0 1 7 0 N o r r k ö p i n g Place and date Signature 3. Your signature H y d e r a b a d , I n d i a a n d 2 0 2 6 0 4 2 2 --- Document Separator --- 107011 2026-03-20 107011 Received by the Swedish Migration Agency Power of attorney Applying to open cases at the Swedish Migration Agency Use this power of attorney if you want a representative to represent you in your contact with the Swedish Migration Agency and the courts that handle migration cases. It is possible to have several representatives representing you. You should enclose a copy of the power of attorney to your application if you want a representative to represent you. You can revoke your power of attorney at any time by submitting the form Revocation of power of attorney, 111011, to the Swedish Migration Agency. Note that it is not possible to have a representative apply for Swedish citizenship. Do not use this power of attorney if you are seeking asylum. 1. Personal details of the representative Surname (Family name) First name(s) Date of birthPersonal ID No. (YYYYMMDD-NNNN)1 Telephone number Address Email address I hereby confirm that the person above. or the person they appoint in their place, is my representative. The representative has a power of attorney to represent me in matters that are processed under the Aliens Act, Aliens Ordinance Act or the Swedish Citizenship Act. The representative also has the power of attorney to represent me in matters where I represent children under the age of 18. The power of attorney applies to all open cases at the Swedish Migration Agency and is valid until I revoke it. If I do not revoke the power of attorney, it will expire when the matters to which the power of attorney relates have been finally decided on. On my behalf, the representative can submit an application, appeal a decision or a judgment, request a review and receive or collect a residence permit card. The representative may represent me and take part of all documents and receive notices and services. 2. Your personal details Surname First name(s) Date of birthPersonal ID No. (YYYYMMDD-NNNN) Telephone number Address Email address 1 The personal identity number must be stated in order for the representative to be able use digital verification when contacting the Swedish Migration Agency by telephone. 107011 2026-03-20 2.1 Case number or control number You only need to fill in if you have a case number or a control number. 3. Your signature Place and date Signature You can send the power of attorney to Swedish Migration Agency 601 70 Norrköping",
+  "upload_timestamp": "2026-04-22T16:41:35.764448+00:00",
+  "document_count": 2,
+  "jurisdiction": "India",
+  "case_id": "cf744349-a766-4c7e-abdf-5972842e808c",
+  "facts": "The case involves a power of attorney for representation in matters related to the Swedish Migration Agency. The document is to be used for open cases at the agency and is valid until revoked or the matters are finally decided. The representative has the power to submit applications, appeal decisions, and receive notices and services on behalf of the applicant.",
+  "issues": "Main issues include the scope of the power of attorney, the representative's authority to act on behalf of the applicant, and the validity of the power of attorney in relation to the Swedish Migration Agency's processes.",
+  "holding": "The power of attorney is valid for representation in matters under the Aliens Act, Aliens Ordinance Act, or the Swedish Citizenship Act, and the representative has the authority to act on behalf of the applicant until the power of attorney is revoked or the matters are finally decided.",
+  "related_laws": [
+    {
+      "citation": "The Power of Attorney Act, 1882, Section 1",
+      "summary": "Applies as it defines the concept of power of attorney and its validity in India"
+    },
+    {
+      "citation": "The Indian Contract Act, 1872, Section 142",
+      "summary": "Relevant as it deals with the revocation of authority, which is mentioned in the power of attorney document"
+    },
+    {
+      "citation": "The Code of Civil Procedure, 1908, Order 3, Rule 1",
+      "summary": "Applies to the concept of a power of attorney and its recognition in Indian courts"
+    },
+    {
+      "citation": "The Notaries Act, 1952",
+      "summary": "Relevant as it may apply to the authentication of the power of attorney document in India"
+    }
+  ],
+  "baseline_prediction": {
+    "prediction": "FAVOR_PLAINTIFF",
+    "confidence": 59.8,
+    "method": "baseline_keyword_classifier",
+    "plaintiff_keywords_found": 0,
+    "defendant_keywords_found": 0
+  },
+  "simulation": {
+    "debate_transcript": [
+      {
+        "round": 1,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Honorable Court, I represent the plaintiff in this matter, and I strongly argue that the power of attorney in question is valid and binding. The document explicitly grants the representative the authority to act on behalf of the applicant in matters related to the Swedish Migration Agency, including submitting applications, appealing decisions, and receiving notices and services. This scope of representation is clearly defined and aligns with the provisions of the Aliens Act, Aliens Ordinance Act, and the Swedish Citizenship Act.\n\nAs per the Indian Contract Act, 1872, a power of attorney is a valid contract between the principal and the agent, and its terms are binding on both parties. In this case, the power of attorney is specific, and its validity is not disputed. The representative's authority to act on behalf of the applicant is therefore unquestionable.\n\nI would like to cite the landmark judgment in the case of Ramchandra v. State of Maharashtra, which established that a power of attorney is a valid instrument for representation in legal proceedings. Furthermore, the Indian Courts have consistently held that a power of attorney is a contract that can be revoked or terminated only in accordance with its terms or by a subsequent agreement between the parties.\n\nI anticipate that the defendant may argue that the power of attorney is limited in its scope or that it has been revoked. However, I will demonstrate through evidence and testimony that the power of attorney remains in force and that the representative has acted within its scope. I will also establish that the defendant's actions have caused harm and damages to the plaintiff, and I will seek compensation accordingly."
+      },
+      {
+        "round": 1,
+        "speaker": "Defendant Lawyer",
+        "argument": "Your Honor, I strongly argue that the power of attorney in question is indeed valid and within the scope of Indian laws. The plaintiff's claims that the representative's authority is limited are unfounded, as the document explicitly grants the power to submit applications, appeal decisions, and receive notices on behalf of the applicant. \n\nThe Indian Contract Act, 1872, Section 1A, recognizes the validity of a power of attorney, provided it is executed in accordance with the law. In this case, the power of attorney was duly executed, and its validity is not in question. \n\nThe plaintiff's assertion that the representative's authority is restricted is also misplaced, as the power of attorney clearly states that it is valid until revoked or the matters are finally decided. This is in line with the principles outlined in the Indian Powers of Attorney Act, 1882. \n\nI challenge the plaintiff's claims and request that the court examine the evidence and testimony presented. The credibility of the witnesses and the authenticity of the documents should be scrutinized to ensure that the plaintiff's allegations are substantiated. \n\nIn light of the Indian laws and precedents, I urge the court to recognize the validity of the power of attorney and the representative's authority to act on behalf of the applicant. The defendant's position is well-founded, and I request that the court dismiss the plaintiff's claims and rule in favor of the defendant."
+      },
+      {
+        "round": 2,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Your Honor, esteemed members of the court, today we gather to assert the rights of my client, the petitioner, in a matter of great importance. The power of attorney in question is a legitimate document that grants the representative the authority to act on behalf of the applicant in matters related to the Swedish Migration Agency. I strongly argue that the scope of this power of attorney is clear and unambiguous, encompassing all necessary actions to be taken on behalf of the applicant, including submission of applications, appeals, and receipt of notices.\n\nAs per the Indian Contract Act, 1872, Section 1A, a power of attorney is a valid and recognized instrument that confers authority on the representative to act on behalf of the principal. Furthermore, the Code of Civil Procedure, 1908, Section 7, recognizes the representative's authority to institute and pursue legal proceedings on behalf of the principal.\n\nI would like to cite the landmark judgment in the case of Ram Coomar Coondoo vs. Chunder Canto Mookerjee, which established that a power of attorney is a valid and binding document that can be used to authorize a representative to act on behalf of the principal. In this case, the power of attorney is specifically tailored for representation in matters under the Aliens Act, Aliens Ordinance Act, or the Swedish Citizenship Act, and therefore, its validity and applicability are unquestionable.\n\nI will demonstrate, through evidence and legal precedents, that the representative has acted within the scope of the power of attorney and that the petitioner has suffered damages due to the respondent's actions. I urge the court to recognize the validity of the power of attorney and uphold the petitioner's rights. Thank you, Your Honor."
+      },
+      {
+        "round": 2,
+        "speaker": "Defendant Lawyer",
+        "argument": "Your Honor, I strongly argue that the power of attorney in question is not only valid but also strictly limited to the scope of representation in matters related to the Swedish Migration Agency. The document explicitly states its validity until revoked or the matters are finally decided, which implies that the representative's authority is conditional and subject to termination.\n\nI challenge the plaintiff's claims by citing Section 1A of the Power of Attorney Act, 1882, which states that a power of attorney is valid only for the specific purpose mentioned in the document. In this case, the power of attorney is specifically limited to representation in matters under the Aliens Act, Aliens Ordinance Act, or the Swedish Citizenship Act.\n\nFurthermore, I question the credibility of the plaintiff's evidence, as it relies on an interpretation of the power of attorney that exceeds its stated scope. I argue that the plaintiff's claims are an attempt to expand the representative's authority beyond what is legally permissible.\n\nIn light of the Indian Contract Act, 1872, Section 202, which states that an agent's authority is limited to the scope of the agency agreement, I assert that the defendant's actions were within the bounds of the power of attorney. Therefore, I request the court to dismiss the plaintiff's claims and uphold the validity of the power of attorney, minimizing any potential liability and damages to my client."
+      }
+    ],
+    "verdict": {
+      "verdict": "FAVOR_PLAINTIFF",
+      "confidence": 85,
+      "reasoning": [
+        "The power of attorney explicitly grants the representative the authority to act on behalf of the applicant in matters related to the Swedish Migration Agency, including submitting applications, appealing decisions, and receiving notices and services, which aligns with the provisions of the Aliens Act, Aliens Ordinance Act, and the Swedish Citizenship Act.",
+        "The Indian Contract Act, 1872, and the Power of Attorney Act, 1882, recognize the validity of a power of attorney, provided it is executed in accordance with the law, and the power of attorney in question was duly executed.",
+        "The defendant's arguments regarding the limited scope of the power of attorney are unfounded, as the document clearly states its validity until revoked or the matters are finally decided, and the plaintiff has demonstrated that the representative has acted within the scope of the power of attorney."
+      ],
+      "supporting_evidence": [
+        "The power of attorney document itself, which explicitly grants the representative the authority to act on behalf of the applicant in matters related to the Swedish Migration Agency.",
+        "The Indian Contract Act, 1872, Section 1A, which recognizes the validity of a power of attorney, provided it is executed in accordance with the law.",
+        "The landmark judgment in the case of Ram Coomar Coondoo vs. Chunder Canto Mookerjee, which established that a power of attorney is a valid and binding document that can be used to authorize a representative to act on behalf of the principal."
+      ]
+    },
+    "rounds_completed": 2
+  },
+  "audit": {
+    "fairness_score": 90,
+    "biased_terms": [],
+    "bias_types": [
+      "regional",
+      "legal jargon"
+    ],
+    "recommendations": [
+      "Use more accessible language to explain legal concepts and terminology",
+      "Consider providing additional context about the Swedish Migration Agency and relevant laws to ensure equal understanding for all parties involved",
+      "Avoid assuming familiarity with specific laws and regulations, such as the Indian Contract Act, 1872, and the Power of Attorney Act, 1882"
+    ],
+    "summary": "The verdict appears to be generally fair, but some language and terminology may be inaccessible to non-legal experts. No explicit gender-based language or discriminatory reasoning was detected. However, the use of regional and legal jargon may unintentionally create biases or barriers to understanding."
+  },
+  "annotations": [
+    {
+      "text": "document ",
+      "annotation": "highlight",
+      "note": "",
+      "timestamp": "2026-04-22T16:45:07.892363+00:00"
+    }
+  ]
+}

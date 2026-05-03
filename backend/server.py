@@ -294,8 +294,13 @@ async def predict_outcome(case_id: str):
 
 
 @api_router.post("/simulate/{case_id}", response_model=SimulationResponse)
-async def run_simulation(case_id: str, rounds: int = 2):
-    """Run multi-agent debate simulation."""
+async def run_simulation(case_id: str, rounds: int = 4):
+    """Run multi-agent debate simulation with dynamic rounds based on debate progression.
+    
+    Args:
+        case_id: The case ID to simulate
+        rounds: Maximum number of debate rounds (default 4, minimum 3 will run)
+    """
     try:
         case_data = load_case(case_id)
         
@@ -303,8 +308,10 @@ async def run_simulation(case_id: str, rounds: int = 2):
         if 'facts' not in case_data:
             raise HTTPException(status_code=400, detail="Case must be processed before simulation")
         
-        # Run simulation
-        simulation_result = await orchestrator.run_simulation(case_data, rounds)
+        # Run simulation with dynamic rounds (min 3, max based on rounds param)
+        min_rounds = min(3, rounds)
+        max_rounds = max(3, rounds)
+        simulation_result = await orchestrator.run_simulation(case_data, max_rounds=max_rounds, min_rounds=min_rounds)
         
         # Update case with simulation results
         update_case(case_id, {'simulation': simulation_result})
@@ -375,7 +382,25 @@ async def chatbot_answer(case_id: str, question: str = Form(...)):
         
         # Get simulation/verdict if available
         simulation = case_data.get('simulation', {})
-        verdict_text = simulation.get('verdict', 'Court decision pending') if simulation else 'Court decision pending'
+        verdict_obj = simulation.get('verdict', {}) if simulation else {}
+        
+        # Format verdict text based on new verdict structure
+        if isinstance(verdict_obj, dict):
+            verdict_type = verdict_obj.get('verdict', 'Pending')
+            ruling = verdict_obj.get('ruling', '')
+            remedy = verdict_obj.get('remedy', '')
+            penalty_info = verdict_obj.get('penalty_info', {})
+            
+            if ruling and remedy:
+                verdict_text = f"{ruling}\n{remedy}"
+            elif remedy:
+                verdict_text = remedy
+            elif penalty_info.get('description'):
+                verdict_text = f"Verdict: {verdict_type}\nRemedy: {penalty_info.get('description')}"
+            else:
+                verdict_text = f"Court Verdict: {verdict_type}"
+        else:
+            verdict_text = 'Court decision pending'
         
         # Use available information for context
         if not facts or len(str(facts)) < 50:

@@ -1,0 +1,59 @@
+{
+  "filenames": [
+    "Case-1 Special Leave to Appeal.pdf"
+  ],
+  "raw_text": "1 ITEM NO.56 COURT NO.11 SECTION XIV S U P R E M E C O U R T O F I N D I A RECORD OF PROCEEDINGS Petition(s) for Special Leave to Appeal (Civil) No(s).196492009 (From the judgement and order dated 22.7.2009 in C.W.P. No.8572009 of The HIGH COURT OF DELHI AT NEW DELHI) DIRECTORATE OF ENFORCEMENT Petitioner(s) VERSUS ARUN KUMAR AGRAWAL  ORS. Respondent(s) (With prayer for interim relief and office report) Date: 09072010 This Petition was called on for hearing today. CORAM : HON'BLE MR. JUSTICE G.S. SINGHVI HON'BLE MR. JUSTICE ASOK KUMAR GANGULY For Petitioner(s) Mr. Gopal Subramanium,S.G. Mr. Rajshekhar Rao, Adv. Mr. Sreekumar, Adv. Mr.Senthil Jagadeesan,Adv. For Respondent(s) Mr. Prashant Bhushan,Adv. Mr. Rajiv Nanda, Adv. Mr. B.K. Prasad, Adv. Mr. Kamaldeep Dayal, Adv. Mr. Siddhartha Chowdhury, Adv. 41 2 O R D E R UPON hearing counsel the Court made the following This petition is directed against order dated 22.7.2009 passed by the learned Single Judge of Delhi High Court, paragraph 11 of which reads thus: \"CIC is yet to decide the question whether the information sought for is covered by Section 24(1) of the Act, whether first proviso applies and exceptions can be claimed under Section 8(1) of th e Act. Impugned order dated 29th December, 2008 makes a general observation on the basis of allegations made by the respondent No. 1 in the appeal and observes that allegations of corruption have been made. No final and determinative finding has been given by CIC. It is open to the petitioner to produce the original files and then press that the conditions mentioned in proviso to Section 24(1) of the Act are not satisfied in this case and thus provisions of Section 8(1) of the Act are not required to be examined. Dr. Arun Kumar Agrawal has contended that Mr. Virendera Dayal was not appointed by the Directorate of Enforcement and Section 24(1) of the Act is not applicable, even if the report is recently with the said Directorate. These aspects have not been decided by the CIC. It will not be appropriate for this Court to control the proceedings and flexibility and lactitude has to be allowed. The impugned orders can hardly be categorised as adverse orders against the Directorate of Enforcement.\" We have heard learned counsel for the parties and perused the records. In our view, the impugned order does not suffer from any patent legal infirmity requiring interference under Article 136 of the Constitution. The special leave petition is accordingly dismissed. However, it is made clear that the parties shall be entitled to make all legally permissible submissions before the Central Information Commissioner. (A.D. Sharma) (Phoolan Wati Arora) Court Master Court Master 42",
+  "upload_timestamp": "2026-04-22T16:46:34.274549+00:00",
+  "document_count": 1,
+  "jurisdiction": "India",
+  "case_id": "bdb439e3-020b-43f1-9931-4048c85f73ba",
+  "facts": "Facts not clearly identifiable in document.",
+  "issues": "whether the information sought for is covered by section 24(1) of the act, whether first proviso applies and exceptions can be claimed under section 8(1) of th e act. impugned order dated 29th december, 2008 makes a general observation on the basis of allegations made by the respondent no. 1 in the appeal and observes that allegations of corruption have been made. no final and determinative findin",
+  "holding": "Holding/judgment not clearly specified.",
+  "baseline_prediction": {
+    "prediction": "FAVOR_DEFENDANT",
+    "confidence": 58.22,
+    "method": "baseline_keyword_classifier",
+    "plaintiff_keywords_found": 0,
+    "defendant_keywords_found": 0
+  },
+  "simulation": {
+    "debate_transcript": [
+      {
+        "round": 1,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Honorable Court, I stand before you today to represent the petitioner in this matter, seeking to establish the respondent's liability and claim the information sought under the Right to Information Act, 2005. The impugned order dated 29th December, 2008, is flawed as it makes a general observation based on allegations of corruption without any final and determinative finding. \n\nI argue that the information sought does not fall under Section 24(1) of the Act, as there is no concrete evidence to suggest that it pertains to national security or other exempted categories. Furthermore, the first proviso to Section 24(1) is not applicable in this case, as the petitioner has not sought any information that could compromise national security or public interest.\n\nI would like to cite the landmark judgment in the case of CBSE vs. Aditya Bandopadhyay, (2011) 8 SCC 497, where the Hon'ble Supreme Court held that the Right to Information Act is a tool for accountability and transparency, and that the exemptions under Section 8(1) should be narrowly construed. I urge the Court to consider the petitioner's right to information and the public interest in disclosing the sought information, while also ensuring that the exemptions under Section 8(1) are not misused to conceal information. I will demonstrate, through the course of my arguments, that the respondent's actions are unjustified and that the petitioner is entitled to the information sought."
+      },
+      {
+        "round": 1,
+        "speaker": "Defendant Lawyer",
+        "argument": "Honorable court, I strongly argue that the information sought is indeed covered under Section 24(1) of the Act, and the first proviso applies in this case. The plaintiff's allegations of corruption are baseless and lack concrete evidence. The impugned order dated December 29th, 2008, makes a general observation without any final and determinative findings, which is not sufficient to establish the defendant's liability.\n\nI cite the landmark case of R.K. Jain vs. Union of India (1993) 4 SCC 119, which held that the exemptions under Section 8(1) of the Act can be claimed if the information sought is likely to cause harm to the public interest. In this case, the disclosure of information may compromise the defendant's privacy and reputation, which outweighs the public interest.\n\nFurthermore, I challenge the plaintiff's claims on the grounds that the allegations of corruption are unverified and lack credible evidence. I question the credibility of the respondent no. 1's allegations and argue that they are motivated by malice and personal vendetta. The court should exercise caution in accepting such allegations without concrete proof.\n\nIn light of the above, I urge the court to consider the defendant's right to privacy and reputation, as enshrined in Article 21 of the Constitution of India. I pray that the court dismisses the plaintiff's claims and upholds the defendant's exemptions under Section 8(1) of the Act. The defendant's interests should be protected, and the plaintiff's allegations should be subjected to rigorous scrutiny to prevent any miscarriage of justice."
+      },
+      {
+        "round": 2,
+        "speaker": "Plaintiff Lawyer",
+        "argument": "Honorable Court, I appear on behalf of the petitioner, seeking justice and transparency in the matter at hand. The respondent's order dated 29th December, 2008, is flawed as it makes general observations without concrete evidence, thereby denying the petitioner's rightful access to information under the Act. \n\nThe petitioner's request for information is not covered by Section 24(1) of the Act, as the allegations of corruption are unsubstantiated and lack a final, determinative finding. In the absence of conclusive proof, the first proviso does not apply, and the petitioner is entitled to the information sought. \n\nI rely on the judgment of the Hon'ble Supreme Court in the case of R.K. Jain vs. Union of India, which held that the RTI Act is a powerful tool for promoting transparency and accountability. The Court emphasized that the exemptions under Section 8(1) of the Act should be interpreted narrowly, and the burden of proof lies with the respondent to demonstrate that the information falls within the exceptions. \n\nThe impugned order is unsustainable, as it is based on mere allegations without a thorough investigation. I urge the Court to consider the petitioner's right to information and the larger public interest. The petitioner has been denied access to information, which is a fundamental right under Article 19(1)(a) of the Constitution. I request the Court to allow the petition and direct the respondent to provide the information sought by the petitioner."
+      },
+      {
+        "round": 2,
+        "speaker": "Defendant Lawyer",
+        "argument": "My Lord, I strongly argue that the information sought by the respondent is not covered under Section 24(1) of the Act. The impugned order dated 29th December, 2008, makes a general observation based on allegations of corruption, but fails to provide any concrete evidence or final findings. This lack of substantiation renders the order flawed and unsustainable.\n\nI challenge the plaintiff's claims by invoking the first proviso, which clearly states that exceptions can be claimed under Section 8(1) of the Act. The allegations of corruption are mere accusations, and as per the landmark judgment of the Supreme Court in the case of S.P. Gupta vs. Union of India (1981), allegations alone do not constitute proof.\n\nFurthermore, I cite the precedent set in the case of RBI vs. Jayantilal N. Mistry (1986), which held that the provisions of the Act must be construed strictly. In this case, the respondent has failed to provide any credible evidence to support their claims, and thus, the exceptions under Section 8(1) must be applied.\n\nI also question the credibility of the evidence and testimony presented by the respondent, as it appears to be based on hearsay and unverified allegations. In the absence of concrete evidence, I urge the court to exercise caution and not make any adverse inferences against my client. In conclusion, I submit that the defendant's position is well-founded, and the plaintiff's claims are without merit. I pray that the court upholds the defendant's rights and dismisses the respondent's appeal."
+      }
+    ],
+    "verdict": {
+      "verdict": "FAVOR_PLAINTIFF",
+      "confidence": 80,
+      "reasoning": [
+        "The impugned order dated 29th December, 2008, makes a general observation based on allegations of corruption without any final and determinative finding, which is not sufficient to establish the defendant's liability.",
+        "The plaintiff's allegations of corruption, although unsubstantiated, are not entirely baseless, and the defendant has not provided concrete evidence to refute these claims.",
+        "The exemptions under Section 8(1) of the Act should be narrowly construed, as held in the landmark judgment of CBSE vs. Aditya Bandopadhyay, and the defendant has not demonstrated that the disclosure of information would cause harm to the public interest."
+      ],
+      "supporting_evidence": [
+        "The judgment of the Hon'ble Supreme Court in CBSE vs. Aditya Bandopadhyay, (2011) 8 SCC 497, which held that the Right to Information Act is a tool for accountability and transparency.",
+        "The landmark case of R.K. Jain vs. Union of India, which held that the RTI Act is a powerful tool for promoting transparency and accountability.",
+        "The precedent set in the case of S.P. Gupta vs. Union of India (1981), which held that allegations alone do not constitute proof, but in this case, the plaintiff's allegations are not entirely unfounded."
+      ]
+    },
+    "rounds_completed": 2
+  }
+}
